@@ -5,12 +5,76 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { hid: 'description', name: 'description', content: 'Optimaz is a timed maze game to raise funds for charity' },
+      { name: 'format-detection', content: 'telephone=no' },
+      {
+        hid: 'og-title',
+        name: 'og:title',
+        content:
+          'Optimaz',
+      },
+      {
+        hid: 'og-site_name',
+        name: 'og:site_name',
+        content:
+          'Optimaz',
+      },
+      {
+        hid: 'og-url',
+        name: 'og:url',
+        content:
+          'https://www.optimaz.me',
+      },
+      {
+        hid: 'og-image',
+        name: 'og:image',
+        content:
+          'https://www.optimaz.me/image.png',
+      },
+      {
+        hid: 'twitter-title',
+        name: 'twitter:title',
+        content:
+          'Optimaz',
+      },
+      {
+        hid: 'twitter-description',
+        name: 'twitter:description',
+        content:
+        'Optimaz is a timed maze game to raise funds for charity',
+      },
+      {
+        hid: 'twitter-card',
+        name: 'twitter:card',
+        content:
+          'summary_large_image',
+      },
+      {
+        hid: 'twitter-image',
+        name: 'twitter:image',
+        content:
+        'https://www.optimaz.me',
+      },
+      {
+        hid: 'apple-mobile-web-app-title',
+        name: 'apple-mobile-web-app-title',
+        content:
+          'Art inspired by Banned Books',
+      },
+      {
+        hid: 'twitter-card',
+        name: 'twitter:card',
+        value: 'summary'
+      },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
+    script: [
+      { src: 'https://aframe.io/releases/1.3.0/aframe.min.js', ssr: false },
+      { src: 'https://unpkg.com/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js', ssr: false },
+      { src: 'https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js', ssr: false }
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -36,6 +100,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxt/image',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
   ],
