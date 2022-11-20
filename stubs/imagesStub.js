@@ -49,18 +49,6 @@ export default {
         permaLink: 'https://opensea.io/assets/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/94367166023689824508121337607089910239332488566642841689732307794141036675073',
         assetContractAddress: ''
       },
-      {
-        src: 'https://i.seadn.io/gae/B6lTsvVCZTI3Y9dx8VziUzfVa7qzUAfB-uJ3CqxQLscHf0UIuyKU-3zcrI5Jzkbk895L3XlvR6RbiXXtkjecKCMv4b_d31XUK_Jz?auto=format&w=1000',
-        name: 'I am Pony Series 1 T-Shirt',
-        permaLink: 'https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/82792700510954771777686919428563069321607068200305279657934273197947960164372',
-        assetContractAddress: ''
-      },
-      {
-        src: 'https://i.seadn.io/gae/r6fHfifh3WnI5MTdHCgcxHsithIoFxxwV0rblazaGIHyaRPmI2hwbc5DmmNYIkDnpzHqii_7p9DHKfJfjAT2P3jmSsXJGIT9MiDk1Q?auto=format&w=1000',
-        name: 'GreggyB',
-        permaLink: 'https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/82792700510954771777686919428563069321607068200305279657934273184753820631041',
-        assetContractAddress: ''
-      },
     ]
   }
 }
