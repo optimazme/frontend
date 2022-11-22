@@ -8,7 +8,7 @@
     <h2 class="flex justify-center text-center text-5xl">COMING SOON!</h2>
     <div class="flex justify-center text-center mt-5">
       Follow us on 
-      <a src="https://www.twitter.com/@optimazme" target="_" class="text-blue-500 hover:text-blue-800">
+      <a href="https://www.twitter.com/@optimazme" target="_" class="text-blue-500 hover:text-blue-800">
         Twitter 
       </a> <span class="pl-2">for updates!</span>
     </div>
