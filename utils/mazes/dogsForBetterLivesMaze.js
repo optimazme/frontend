@@ -16,8 +16,8 @@ export default {
       },
     ],
     prompts: [
-      [ "are whispering","detailed", "analogue", "mixed media", "collage","canvas texture", "contemporary art", "punk art", "hyperrealistic", "beautiful face", "photorealistic", "expressionism", "masterpiece", "perfect composition", "spectacular quality", "torn paper", "intricate oil details", "broken glass", "Verdadism" ],
-      [ "hyper realistic", "insanely detailed", "portrait", "steampunk", "steampunk goggles", "steampunk gears", "upper body", "detective coat", "sharp focus", "illustration", "fantasy style", "octane render", "volumetric lighting", "8 k high definition", "wide shot", "greg rutkowski", "highly detailed", "flowing", "trending on art station "]
+      [ "are whispering","detailed", "analogue", "mixed media", "collage","canvas texture", "contemporary art", "punk art", "hyperrealistic", "beautiful face", "photorealistic", "expressionism", "masterpiece", "perfect composition", "spectacular quality", "torn paper", "intricate oil details", "broken glass", "Verdadism", "semi-abstract" ],
+      [ "hyper realistic", "insanely detailed", "portrait", "steampunk", "steampunk goggles", "steampunk gears", "upper body", "detective coat", "sharp focus", "illustration", "fantasy style", "mythical", "octane render", "volumetric lighting", "8 k high definition", "wide shot", "greg rutkowski", "highly detailed", "flowing", "trending on art station "]
     ],
     subjects: [
       'Affenpinscher',

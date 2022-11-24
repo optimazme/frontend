@@ -48,6 +48,8 @@
     <!-- END MAZE -->
     <!-- FLOOR -->
       <a-box src="#floor" position="0 0.5 0" scale="25 0.15 25"/>
+      <a-box src="#floor" position="25 0.5 0" scale="25 0.15 25"/>
+      <a-box src="#floor" position="-25 0.5 0" scale="25 0.15 25"/>
     <!-- END FLOOR -->
   </a-scene>
 </template>

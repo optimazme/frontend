@@ -10,8 +10,9 @@ import ImageInfo from '@/stubs/imagesStub'
 import MazeInfo from'@/utils/mazes/dogsForBetterLivesMaze'
 
 Vue.config.ignoredElements = [
+  'a-box',
   'a-entity',
-  'a-scene'
+  'a-scene',
 ]
 
 interface Data {
@@ -62,17 +63,19 @@ export default Vue.extend<Data, Methods, Components, Props>({
     const images = ImageInfo.data.images.sort(() => (Math.random() > .5) ? 1 : -1)
     const subject = MazeInfo.data.subjects.sort(() => (Math.random() > .5) ? 1 : -1)
     const prompt = MazeInfo.data.prompts.sort(() => (Math.random() > .5) ? 1 : -1)
+    const chosenPrompt = prompt[0]
 
     const shownImages = images.map((image, index) => {
       return {
         src: image.src,
-        displayInfo: locations[index]
+        displayInfo: locations[index],
+        word: chosenPrompt[index]
       }
     })
     this.shownImages = shownImages
     this.$store.dispatch('maze/setShowImages', shownImages)
     this.$store.dispatch('maze/setSubject', subject[0])
-    this.$store.dispatch('maze/setPrompt', prompt[0])
+    this.$store.dispatch('maze/setPrompt', chosenPrompt)
   },
   methods: {
     browserWidth(): number|any {

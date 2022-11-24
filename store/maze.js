@@ -3,6 +3,7 @@ export const state = () => ({
   cameraY: 1.6,
   cameraZ: 0,
   foundImages: [],
+  foundPhrases: [],
   prompt: [],
   showImages: [],
   showNavigation: false,
@@ -15,6 +16,7 @@ export const getters = {
   cameraZPosition: state => state.cameraZ,
   foundImages: state => state.foundImages,
   foundImagesLength: state => state.foundImages.length,
+  foundPhrases: state => state.foundPhrases,
   prompt: state => state.prompt,
   showImages: state => state.showImages,
   showImagesLength: state => state.showImages.length,
@@ -34,6 +36,9 @@ export const actions = {
   },
   setFoundImage({ commit }, imageInfo) {
     commit('SET_FOUND_IMAGE', imageInfo)
+  },
+  setFoundPhrases({ commit }, phrases) {
+    commit('SET_FOUND_PHRASES', phrases)
   },
   setPrompt({ commit }, prompt) {
     commit('SET_PROMPT', prompt)
@@ -61,6 +66,11 @@ export const mutations = {
   },
   SET_FOUND_IMAGE(state, imageInfo) {
     state.foundImages.push(imageInfo)
+  },
+  SET_FOUND_PHRASES(state, phrases) {
+    phrases.unshift(state.subject)
+    
+    state.foundPhrases = phrases
   },
   SET_PROMPT(state, prompt) {
     state.prompt = prompt
