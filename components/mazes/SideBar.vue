@@ -4,8 +4,8 @@
     <div>
       {{foundImagesLength}} / {{showImagesLength}}
     </div>
-    <div>
-      <div v-for="(image, index) in foundImages" :key="`side-image-${index}`">
+    <div class="h-60 w-full overflow-y-auto">
+      <div v-for="(image, index) in foundImages" :key="`side-image-${index}`" class="w-40">
         <NuxtImg class="w-20" :src="image.src" />
       </div>
     </div>
