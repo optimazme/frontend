@@ -49,6 +49,79 @@ export default {
         permaLink: 'https://opensea.io/assets/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/94367166023689824508121337607089910239332488566642841689732307794141036675073',
         assetContractAddress: ''
       },
+      {
+        src: 'https://duaimei.github.io/202211_gallery/images/bba_utopia/127.png',
+        name: 'BannedBooks AI Art',
+        permaLink: '',
+        assetContractAddress: ''
+      },
+      {
+        src: 'https://duaimei.github.io/202211_gallery/images/bba_utopia/126.png',
+        name: 'BannedBooks AI Art',
+        permaLink: '',
+        assetContractAddress: ''
+      },
+      {
+        src: 'https://duaimei.github.io/202211_gallery/images/bba_utopia/125.png',
+        name: 'BannedBooks AI Art',
+        permaLink: '',
+        assetContractAddress: ''
+      },
+      {
+        src: 'https://duaimei.github.io/202211_gallery/images/bba_utopia/124.png',
+        name: 'BannedBooks AI Art',
+        permaLink: '',
+        assetContractAddress: ''
+      },
+      {
+        src: 'https://duaimei.github.io/202211_gallery/images/bba_utopia/123.png',
+        name: 'BannedBooks AI Art',
+        permaLink: '',
+        assetContractAddress: ''
+      },
+      {
+        src: 'https://duaimei.github.io/202211_gallery/images/bba_utopia/122.png',
+        name: 'BannedBooks AI Art',
+        permaLink: '',
+        assetContractAddress: ''
+      },
+      {
+        src: 'https://duaimei.github.io/202211_gallery/images/bba_utopia/121.png',
+        name: 'BannedBooks AI Art',
+        permaLink: '',
+        assetContractAddress: ''
+      },
+      {
+        src: 'https://duaimei.github.io/202211_gallery/images/bba_utopia/120.png',
+        name: 'BannedBooks AI Art',
+        permaLink: '',
+        assetContractAddress: ''
+      },
+      {
+        src: 'https://duaimei.github.io/202211_gallery/images/bba_utopia/119.png',
+        name: 'BannedBooks AI Art',
+        permaLink: '',
+        assetContractAddress: ''
+      },
+      {
+        src: 'https://duaimei.github.io/202211_gallery/images/bba_utopia/118.png',
+        name: 'BannedBooks AI Art',
+        permaLink: '',
+        assetContractAddress: ''
+      },
+      {
+        src: 'https://duaimei.github.io/202211_gallery/images/bba_utopia/117.png',
+        name: 'BannedBooks AI Art',
+        permaLink: '',
+        assetContractAddress: ''
+      },
+      {
+        src: 'https://duaimei.github.io/202211_gallery/images/bba_utopia/116.png',
+        name: 'BannedBooks AI Art',
+        permaLink: '',
+        assetContractAddress: ''
+      },
+      
     ]
   }
 }
