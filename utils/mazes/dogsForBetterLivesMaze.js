@@ -91,7 +91,7 @@ export default {
       'Heeler',
       'mutt'
     ],
-    locations: [
+    ylocations: [
       { position: '0 2 -5', scale: '1 1 1', rotation: '0 0 0' },
       { position: '5 2 -5', scale: '1 1 1', rotation: '0 0 0' },
       { position: '-5 2 -5', scale: '1 1 1', rotation: '0 0 0' },
@@ -105,7 +105,7 @@ export default {
       { position: '5 2 -20', scale: '1 1 1', rotation: '0 0 0' },
       { position: '-5 2 -20', scale: '1 1 1', rotation: '0 0 0' },
     ],
-    xlocations: [
+    locations: [
       
       { position: '-100 2 -95', scale: '1 1 1', rotation: '0 0 0' },  
 
