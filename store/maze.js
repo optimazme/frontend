@@ -3,8 +3,10 @@ export const state = () => ({
   cameraY: 1.6,
   cameraZ: 0,
   foundImages: [],
+  prompt: [],
   showImages: [],
   showNavigation: false,
+  subject: ''
 })
 
 export const getters = {
@@ -13,9 +15,11 @@ export const getters = {
   cameraZPosition: state => state.cameraZ,
   foundImages: state => state.foundImages,
   foundImagesLength: state => state.foundImages.length,
+  prompt: state => state.prompt,
   showImages: state => state.showImages,
   showImagesLength: state => state.showImages.length,
-  showNavigation: state => state.showNavigation
+  showNavigation: state => state.showNavigation,
+  subject: state => state.subject
 }
 
 export const actions = {
@@ -31,11 +35,17 @@ export const actions = {
   setFoundImage({ commit }, imageInfo) {
     commit('SET_FOUND_IMAGE', imageInfo)
   },
+  setPrompt({ commit }, prompt) {
+    commit('SET_PROMPT', prompt)
+  },
   setShowImages({ commit }, images) {
     commit('SET_SHOW_IMAGES', images)
   },
   setShowNavigation({ commit }, bool) {
     commit('SET_SHOW_NAVIGATION', bool)
+  },
+  setSubject({ commit }, subject) {
+    commit('SET_SUBJECT', subject)
   }
 }
 
@@ -52,10 +62,16 @@ export const mutations = {
   SET_FOUND_IMAGE(state, imageInfo) {
     state.foundImages.push(imageInfo)
   },
+  SET_PROMPT(state, prompt) {
+    state.prompt = prompt
+  },
   SET_SHOW_IMAGES(state, images) {
     state.showImages = images
   },
   SET_SHOW_NAVIGATION(state, bool) {
     state.showNavigation = bool
+  },
+  SET_SUBJECT(state, subject) {
+    state.subject = subject
   }
 }
