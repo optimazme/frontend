@@ -131,7 +131,7 @@ export default Vue.extend<Data, Methods, Components, Props>({
 
 </script>
 
-<script>
+<!-- <script>
   export default {
     name: 'IndexPage',
     methods: {
@@ -141,7 +141,7 @@ export default Vue.extend<Data, Methods, Components, Props>({
     }
   }
   
-</script>
+</script> -->
 
 <style>
   /* .body-container {
