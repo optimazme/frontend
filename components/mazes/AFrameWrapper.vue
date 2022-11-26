@@ -1,22 +1,28 @@
 <template>
-  <!-- <a-scene 
+  <a-scene 
     id="maze"
     :style="`height: ${canvasHeight}px; width: ${canvasWidth}px`"
     environment="preset: default; groundYScale: 0.3; groundColor: #fff;"
     cursor="rayOrigin: mouse; fuse: false"
     raycaster="objects: .raycastable" embedded
-  > -->
-  <a-scene
+  >
+  <!-- <a-scene
       id="maze"
       cursor="rayOrigin: mouse; fuse: false"
       :style="`height: ${canvasHeight}px; width: ${canvasWidth}px`"
       raycaster="objects: .raycastable"
       embedded
-    >
+    > -->
     <!-- ASSETS -->
       <a-assets>
         <img id="floor" src="http://localhost:3000/mazes/demo_floor.png">
-        <a-asset-item id="maze" src="http://localhost:3000/mazes/demo.glb"></a-asset-item>
+        <a-asset-item id="maze-obj" :src="objUrl"></a-asset-item>
+        <a-asset-item id="maze-mtl" :src="materialUrl"></a-asset-item>
+        <a-asset-item id="maze-glb" :src="mazeObj"></a-asset-item>
+        <a-entity v-for="(image, index) in showImages" :key="`image-${index}}`">
+          <a-asset-item :id="`image-${index}}`" :src="image.src"></a-asset-item>
+        </a-entity>
+       
       </a-assets>
     <!-- END ASSETS -->
     <!-- CAMERA -->
@@ -44,12 +50,18 @@
     </a-entity>
     <!-- END IMAGES -->
     <!-- MAZE -->
-      <a-entity gltf-model="#maze"></a-entity>
+      <a-gltf-model position="0 0 0" scale=".95 1 .95" rotation="0 90 0" src="#maze-glb"></a-gltf-model>
     <!-- END MAZE -->
     <!-- FLOOR -->
       <a-box src="#floor" position="0 0.5 0" scale="25 0.15 25"/>
       <a-box src="#floor" position="25 0.5 0" scale="25 0.15 25"/>
       <a-box src="#floor" position="-25 0.5 0" scale="25 0.15 25"/>
+      <a-box src="#floor" position="50 0.5 0" scale="25 0.15 25"/>
+      <a-box src="#floor" position="-50 0.5 0" scale="25 0.15 25"/>
+      <a-box src="#floor" position="75 0.5 0" scale="25 0.15 25"/>
+      <a-box src="#floor" position="-75 0.5 0" scale="25 0.15 25"/>
+      <a-box src="#floor" position="100 0.5 0" scale="25 0.15 25"/>
+      <a-box src="#floor" position="-100 0.5 0" scale="25 0.15 25"/>
     <!-- END FLOOR -->
   </a-scene>
 </template>
@@ -75,6 +87,13 @@ export default Vue.extend({
       default: 500
     }
   },
+  data() {
+    return {
+      objUrl: "https://duaimei.github.io/metamaze/example/tinker.obj",
+      materialUrl: "https://duaimei.github.io/metamaze/example/obj.mtl",
+      mazeObj: 'http://localhost:3000/mazes/demo.glb'
+    }
+  },
   computed: {
     ...mapGetters('maze', ['cameraXPosition', 'cameraYPosition', 'cameraZPosition', 'foundImages', 'foundImagesLength', 'showImages']),
     cameraPositionValue() {
@@ -92,6 +111,9 @@ export default Vue.extend({
         const message = image.displayInfo.position ? `Found image! ${image.displayInfo.position}` : 'no image found'
         console.log(message)
       }
+    },
+    getDefaultAnimation() {
+
     },
     isUnfound(image: any) {
       // console.log(this.$store.getters['maze/foundImages'])
