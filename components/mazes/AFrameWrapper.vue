@@ -50,12 +50,18 @@
     </a-entity>
     <!-- END IMAGES -->
     <!-- MAZE -->
-      <a-gltf-model position="0 0 0" scale="1 1 1" rotation="0 90 0" src="#maze-glb"></a-gltf-model>
+      <a-gltf-model position="0 0 0" scale=".95 1 .95" rotation="0 90 0" src="#maze-glb"></a-gltf-model>
     <!-- END MAZE -->
     <!-- FLOOR -->
       <a-box src="#floor" position="0 0.5 0" scale="25 0.15 25"/>
       <a-box src="#floor" position="25 0.5 0" scale="25 0.15 25"/>
       <a-box src="#floor" position="-25 0.5 0" scale="25 0.15 25"/>
+      <a-box src="#floor" position="50 0.5 0" scale="25 0.15 25"/>
+      <a-box src="#floor" position="-50 0.5 0" scale="25 0.15 25"/>
+      <a-box src="#floor" position="75 0.5 0" scale="25 0.15 25"/>
+      <a-box src="#floor" position="-75 0.5 0" scale="25 0.15 25"/>
+      <a-box src="#floor" position="100 0.5 0" scale="25 0.15 25"/>
+      <a-box src="#floor" position="-100 0.5 0" scale="25 0.15 25"/>
     <!-- END FLOOR -->
   </a-scene>
 </template>
