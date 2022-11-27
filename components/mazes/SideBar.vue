@@ -1,8 +1,17 @@
 <template>
-  <div class="h-full">
-    <h1>Metamaze</h1>
+  <div class="h-full bg-gray-300">
     <div>
-      {{foundImagesLength}} / {{showImagesLength}}
+      <nuxt-img src="/logo_transparent.png" alt="Optimaz" class="w-48"/>
+    </div>
+    <div class="grid col-2">
+      <div class="">
+        <img :src="pfpSource" alt="pfp image for game" class="w-1/2 h-1/2"/>
+      </div>
+      <div class="">
+        <CountDown :game-duration-in-minutes="1"/>
+        {{foundImagesLength}} / {{showImagesLength}}
+      </div>
+      
     </div>
     <div class="h-96 w-full overflow-y-auto">
       <div v-for="(image, index) in foundImages" :key="`side-image-${index}`" class="w-60 flex flex-col md:flex-row">
@@ -29,7 +38,7 @@ interface Methods {
 }
 
 interface Components {
-
+  CountDown: any
 }
 
 interface Props {
@@ -42,11 +51,13 @@ interface Computed {
 
 export default Vue.extend<Data, Methods, Components, Props, Computed>({
   computed: {
-    ...mapGetters('maze', ['foundImages', 'foundImagesLength', 'foundPhrases', 'showImagesLength']),
+    ...mapGetters('maze', ['foundImages', 'foundImagesLength', 'foundPhrases','pfpSource', 'showImagesLength']),
     aiPhrase() {
       return this.foundPhrases.join(',')
     }
-    
+  },
+  components: {
+    CountDown: () => import('@/components/mazes/CountDown.vue')
   },
   methods: {
     endGame() {

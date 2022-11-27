@@ -4,6 +4,10 @@ export const state = () => ({
   cameraZ: 0,
   foundImages: [],
   foundPhrases: [],
+  gameEndTime: null,
+  hasGameEnded: false,
+  minutesLeft: 0,
+  pfpSource: 'http://localhost:3000/maze/demo_floor.png',
   prompt: [],
   showImages: [],
   showNavigation: false,
@@ -17,6 +21,10 @@ export const getters = {
   foundImages: state => state.foundImages,
   foundImagesLength: state => state.foundImages.length,
   foundPhrases: state => state.foundPhrases,
+  gameEndTime: state => state.gameEndTime,
+  hasGameEnded: state => state.hasGameEnded,
+  minutesLeft: state => state.minutesLeft,
+  pfpSource: state => state.pfpSource,
   prompt: state => state.prompt,
   showImages: state => state.showImages,
   showImagesLength: state => state.showImages.length,
@@ -25,6 +33,17 @@ export const getters = {
 }
 
 export const actions = {
+  endGame({ commit, state }) {
+    commit('END_GAME')
+    const phrases = state.foundImages.map(x => x.word)
+    commit('SET_FOUND_PHRASES', phrases)
+  },
+  gameEndTime({ commit }, endTime) {
+    commit('GAME_END_TIME', endTime)
+  },
+  minutesLeft({commit}, minute) {
+    commit('MINUTES_LEFT', minute)
+  },
   setCameraX({commit}, xPosition) {
     commit('SET_X_POSITION', xPosition)
   },
@@ -40,6 +59,9 @@ export const actions = {
   setFoundPhrases({ commit }, phrases) {
     commit('SET_FOUND_PHRASES', phrases)
   },
+  setPfpSource({ commit }, src) {
+    commit('SET_PFP_SOURCE', src)
+  },
   setPrompt({ commit }, prompt) {
     commit('SET_PROMPT', prompt)
   },
@@ -51,10 +73,22 @@ export const actions = {
   },
   setSubject({ commit }, subject) {
     commit('SET_SUBJECT', subject)
-  }
+  },
+  startGame({ commit }) {
+    commit('START_GAME')
+  },
 }
 
 export const mutations = {
+  END_GAME(state) {
+    state.hasGameEnded = true
+  },
+  GAME_END_TIME(state, endTime) {
+    state.gameEndTime = endTime
+  },
+  MINUTES_LEFT(state, minute) {
+    state.minutesLeft = minute
+  },
   SET_X_POSITION(state, xPosition) {
     state.cameraX = xPosition
   },
@@ -72,6 +106,9 @@ export const mutations = {
     
     state.foundPhrases = phrases
   },
+  SET_PFP_SOURCE(state, src) {
+    state.pfpSource = src
+  },
   SET_PROMPT(state, prompt) {
     state.prompt = prompt
   },
@@ -83,5 +120,8 @@ export const mutations = {
   },
   SET_SUBJECT(state, subject) {
     state.subject = subject
-  }
+  },
+  START_GAME(state) {
+    state.hasGameEnded = false
+  },
 }
