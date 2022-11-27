@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2>Congratulations!</h2>
-    <h3>These are the words that you rescued!</h3>
+    <h2 class="text-center text-6xl font-extrabold">Congratulations!</h2>
+    <h3 class="text-center text-5xl">These are the words that you rescued!</h3>
     <div class="flex flex-row">
       <img :src="pfpSource" alt="your souvenir pfp" />
       <div>
