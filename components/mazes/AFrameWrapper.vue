@@ -18,7 +18,7 @@
         <img id="floor" :src="pfpSource">
         <a-asset-item id="maze-glb" :src="mazeObj"></a-asset-item>
         <a-entity v-for="(image, index) in showImages" :key="`image-${index}}`">
-          <a-asset-item :id="`image-${index}}`" :src="image.src"></a-asset-item>
+          <a-asset-item :id="`vr-image-${index}`" :src="image.src"></a-asset-item>
         </a-entity>
        
       </a-assets>
@@ -48,7 +48,7 @@
     </a-entity>
     <!-- END IMAGES -->
     <!-- MAZE -->
-      <a-gltf-model position="0 0 0" scale=".95 1 .95" rotation="0 90 0" src="#maze-glb"></a-gltf-model>
+      <!-- <a-gltf-model position="0 0 0" scale=".95 1 .95" rotation="0 90 0" src="#maze-glb"></a-gltf-model> -->
     <!-- END MAZE -->
     <!-- FLOOR -->
       <a-box v-for="position in floorPositions(-100, 100, 25)" :key="position"
