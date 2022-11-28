@@ -16,8 +16,6 @@
     <!-- ASSETS -->
       <a-assets>
         <img id="floor" :src="pfpSource">
-        <a-asset-item id="maze-obj" :src="objUrl"></a-asset-item>
-        <a-asset-item id="maze-mtl" :src="materialUrl"></a-asset-item>
         <a-asset-item id="maze-glb" :src="mazeObj"></a-asset-item>
         <a-entity v-for="(image, index) in showImages" :key="`image-${index}}`">
           <a-asset-item :id="`image-${index}}`" :src="image.src"></a-asset-item>
@@ -53,70 +51,11 @@
       <a-gltf-model position="0 0 0" scale=".95 1 .95" rotation="0 90 0" src="#maze-glb"></a-gltf-model>
     <!-- END MAZE -->
     <!-- FLOOR -->
-      <a-box src="#floor" position="0 0.5 0" scale="25 0.15 25"/>
-      <a-box src="#floor" position="25 0.5 0" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-25 0.5 0" scale="25 0.15 25"/>
-      <a-box src="#floor" position="50 0.5 0" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-50 0.5 0" scale="25 0.15 25"/>
-      <a-box src="#floor" position="75 0.5 0" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-75 0.5 0" scale="25 0.15 25"/>
-      <a-box src="#floor" position="100 0.5 0" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-100 0.5 0" scale="25 0.15 25"/>
-      <a-box src="#floor" position="0 0.5 25" scale="25 0.15 25"/>
-      <a-box src="#floor" position="25 0.5 25" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-25 0.5 25" scale="25 0.15 25"/>
-      <a-box src="#floor" position="50 0.5 25" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-50 0.5 25" scale="25 0.15 25"/>
-      <a-box src="#floor" position="75 0.5 25" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-75 0.5 25" scale="25 0.15 25"/>
-      <a-box src="#floor" position="100 0.5 25" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-100 0.5 25" scale="25 0.15 25"/>
-      <a-box src="#floor" position="0 0.5 -25" scale="25 0.15 25"/>
-      <a-box src="#floor" position="25 0.5 -25" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-25 0.5 -25" scale="25 0.15 25"/>
-      <a-box src="#floor" position="50 0.5 -25" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-50 0.5 -25" scale="25 0.15 25"/>
-      <a-box src="#floor" position="75 0.5 -25" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-75 0.5 -25" scale="25 0.15 25"/>
-      <a-box src="#floor" position="100 0.5 -25" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-100 0.5 -25" scale="25 0.15 25"/>
-      <a-box src="#floor" position="0 0.5 -50" scale="25 0.15 25"/>
-      <a-box src="#floor" position="25 0.5 -50" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-25 0.5 -50" scale="25 0.15 25"/>
-      <a-box src="#floor" position="50 0.5 -50" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-50 0.5 -50" scale="25 0.15 25"/>
-      <a-box src="#floor" position="75 0.5 -50" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-75 0.5 -50" scale="25 0.15 25"/>
-      <a-box src="#floor" position="100 0.5 -50" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-100 0.5 -50" scale="25 0.15 25"/>
-      <a-box src="#floor" position="0 0.5 50" scale="25 0.15 25"/>
-      <a-box src="#floor" position="25 0.5 50" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-25 0.5 50" scale="25 0.15 25"/>
-      <a-box src="#floor" position="50 0.5 50" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-50 0.5 50" scale="25 0.15 25"/>
-      <a-box src="#floor" position="75 0.5 50" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-75 0.5 50" scale="25 0.15 25"/>
-      <a-box src="#floor" position="100 0.5 50" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-100 0.5 50" scale="25 0.15 25"/>
-      <a-box src="#floor" position="0 0.5 75" scale="25 0.15 25"/>
-      <a-box src="#floor" position="25 0.5 75" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-25 0.5 75" scale="25 0.15 25"/>
-      <a-box src="#floor" position="50 0.5 75" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-50 0.5 75" scale="25 0.15 25"/>
-      <a-box src="#floor" position="75 0.5 75" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-75 0.5 75" scale="25 0.15 25"/>
-      <a-box src="#floor" position="100 0.5 75" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-100 0.5 75" scale="25 0.15 25"/>
-      <a-box src="#floor" position="0 0.5 -75" scale="25 0.15 25"/>
-      <a-box src="#floor" position="25 0.5 -75" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-25 0.5 -75" scale="25 0.15 25"/>
-      <a-box src="#floor" position="50 0.5 -75" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-50 0.5 -75" scale="25 0.15 25"/>
-      <a-box src="#floor" position="75 0.5 -75" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-75 0.5 -75" scale="25 0.15 25"/>
-      <a-box src="#floor" position="100 0.5 -75" scale="25 0.15 25"/>
-      <a-box src="#floor" position="-100 0.5 -75" scale="25 0.15 25"/>
-
+      <a-box v-for="position in floorPositions(-100, 100, 25)" :key="position"
+        src="#floor"
+        :position="position"
+        scale="25 0.15 25"
+       />
     <!-- END FLOOR -->
   </a-scene>
 </template>
@@ -132,7 +71,27 @@ Vue.config.ignoredElements = [
   'a-box',
   'a-scene'
 ]
-export default Vue.extend({
+
+interface Data {
+  mazeObj: string
+}
+
+interface Methods {
+
+}
+
+interface Components {
+  showImagesLength?: number | any
+  foundImagesLength?: number | any
+  cameraPositionValue?: string | any
+}
+
+interface Props {
+  canvasWidth: number
+  canvasHeight: number
+}
+
+export default Vue.extend<Data, Methods, Components, Props>({
   props: {
     canvasWidth: {
       type: Number,
@@ -145,8 +104,6 @@ export default Vue.extend({
   },
   data() {
     return {
-      objUrl: "https://duaimei.github.io/metamaze/example/tinker.obj",
-      materialUrl: "https://duaimei.github.io/metamaze/example/obj.mtl",
       mazeObj: 'http://localhost:3000/mazes/demo.glb'
     }
   },
@@ -180,6 +137,15 @@ export default Vue.extend({
       // return true
       const foundImages = this.$store.getters['maze/foundImages'].map((image:any) => image.src)
       return !foundImages.includes(image.src)
+    },
+    floorPositions(min: number, max: number, increment: number) {
+      const positions = []
+      for(let i = min; i <= max; i = i + increment) {
+        for (let j = min; j <= max; j = j + increment) {
+          positions.push(`${i} 0.25 ${j}`)
+        }
+      }
+      return positions
     }
   }
   

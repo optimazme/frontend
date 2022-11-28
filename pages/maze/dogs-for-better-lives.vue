@@ -37,21 +37,20 @@ interface Methods {
 }
 
 interface Components {
-  AFrameWrapper: any
-  EndScreen: any
-  SideBar: any
+  AFrameWrapper?: any
+  EndScreen?: any
+  SideBar?: any
+  hasGameEnded?: boolean | any
+  showGame?: boolean | any
+  showImagesLength?: number | any
+  foundImagesLength?: number | any
 }
 
 interface Props {
 
 }
 
-interface Computed {
-  showGame: boolean | any
-  hasGameEnded: boolean
-}
-
-export default Vue.extend<Data, Methods, Components, Props, Computed>({
+export default Vue.extend<Data, Methods, Components, Props>({
   components: {
     AFrameWrapper: () => import('@/components/mazes/AFrameWrapper.vue'),
     EndScreen: () => import('@/components/mazes/EndScreen.vue'),
@@ -67,7 +66,7 @@ export default Vue.extend<Data, Methods, Components, Props, Computed>({
   },
   computed: {
      ...mapGetters('maze', ['foundImagesLength', 'hasGameEnded', 'showImagesLength']),
-     showGame() {
+     showGame(): boolean {
       return !this.hasGameEnded
      }
   },

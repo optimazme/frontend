@@ -38,31 +38,30 @@ interface Methods {
 }
 
 interface Components {
-  CountDown: any
+  CountDown?: any
+  aiPhrase?: any
+  foundPhrases: string[]
 }
 
 interface Props {
 
 }
 
-interface Computed {
-  foundPhrases: string[]
-}
 
-export default Vue.extend<Data, Methods, Components, Props, Computed>({
-  computed: {
-    ...mapGetters('maze', ['foundImages', 'foundImagesLength', 'foundPhrases','pfpSource', 'showImagesLength']),
-    aiPhrase() {
-      return this.foundPhrases.join(',')
-    }
-  },
+export default Vue.extend<Data, Methods, Components, Props>({
   components: {
     CountDown: () => import('@/components/mazes/CountDown.vue')
+  },
+  computed: {
+    ...mapGetters('maze', ['foundImages', 'foundImagesLength', 'foundPhrases','pfpSource', 'showImagesLength']),
+    aiPhrase(): string {
+      return this.foundPhrases.join(',')
+    }
   },
   methods: {
     endGame() {
       const foundPhrases = this.$store.getters['maze/foundImages'].map((x: any) => { return x.word })
-      console.log({ foundPhrases })
+      
       this.$store.dispatch('maze/setFoundPhrases', foundPhrases)
     }
   }
