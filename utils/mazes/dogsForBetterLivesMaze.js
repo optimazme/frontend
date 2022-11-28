@@ -90,8 +90,8 @@ export default {
       'Saint Bernard',
       'Samoyed',
       'Shar Pei',
-      'Shiba Inu[256]',
-      'Shih Tzu[205]',
+      'Shiba Inu',
+      'Shih Tzu',
       'schnauzer',
       'Siberian Husky',
       'Whippet',
@@ -99,7 +99,7 @@ export default {
       'Heeler',
       'mutt'
     ],
-    ylocations: [
+    locations: [
       { position: '0 2 -5', scale: '1 1 1', rotation: '0 0 0' },
       { position: '5 2 -5', scale: '1 1 1', rotation: '0 0 0' },
       { position: '-5 2 -5', scale: '1 1 1', rotation: '0 0 0' },
@@ -113,7 +113,7 @@ export default {
       { position: '5 2 -20', scale: '1 1 1', rotation: '0 0 0' },
       { position: '-5 2 -20', scale: '1 1 1', rotation: '0 0 0' },
     ],
-    locations: [
+    xlocations: [
       
       { position: '-100 2 -95', scale: '1 1 1', rotation: '0 0 0' },  
 
