@@ -8,7 +8,7 @@
         <img :src="pfpSource" alt="pfp image for game" class="w-1/2 h-1/2"/>
       </div>
       <div class="">
-        <CountDown :game-duration-in-minutes="1"/>
+        <CountDown :game-duration-in-minutes="5"/>
         {{foundImagesLength}} / {{showImagesLength}}
       </div>
       
