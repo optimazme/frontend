@@ -3,7 +3,8 @@ const colors = require('tailwindcss/colors')
 module.exports = {
   theme: {
     fontFamily: {
-     body: ['Roboto', 'Helvetica', 'Arial', 'sans-serif']
+     body: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+     logo: ['Poppins', 'Arial', 'sans-serif']
     },
     colors: {
       transparent: 'transparent',

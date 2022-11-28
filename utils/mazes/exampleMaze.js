@@ -1,21 +1,27 @@
 export default {
   "data": {
+    slug: '',
+    cameraStartPosition: '0 0 0',
+    gameTimeInMinutes: 5,
+    mazeImageCount: 20,
     assets: [
       {
-        name: 'homeworld',
-        type: 'asset',
-        "source": "",
-        "citation": "",
-        "objUrl": "https://duaimei.github.io/metamaze/example/tinker.obj",
-        "materialUrl": "https://duaimei.github.io/metamaze/example/obj.mtl",
+        name: 'maze',
+        "obj": "yourMazeFullPath.glb",
         display: {
           "scale": "0.94 .5 0.94",
           "position": "0 0 0",
-          "rotation": "-90 90 0"
+          "rotation": "0 90 0"
         }
       },
     ],
-    locations: [
+    prompts: [
+      [ "example prompt", "array length should be the same as mazeImageCount", "find prompt inspiration at /admin/prompts" ],
+    ],
+    subjects: [
+      'base subject options in maze to ensure somewhate theme cohesion',
+    ],
+    closeLocations: [
       { position: '0 2 -5', scale: '1 1 1', rotation: '0 0 0' },
       { position: '5 2 -5', scale: '1 1 1', rotation: '0 0 0' },
       { position: '-5 2 -5', scale: '1 1 1', rotation: '0 0 0' },
@@ -29,7 +35,7 @@ export default {
       { position: '5 2 -20', scale: '1 1 1', rotation: '0 0 0' },
       { position: '-5 2 -20', scale: '1 1 1', rotation: '0 0 0' },
     ],
-    xlocations: [
+    locations: [
       
       { position: '-100 2 -95', scale: '1 1 1', rotation: '0 0 0' },  
 

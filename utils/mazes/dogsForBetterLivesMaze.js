@@ -6,8 +6,7 @@ export default {
     assets: [
       {
         name: 'maze',
-        "objUrl": "https://duaimei.github.io/metamaze/example/tinker.obj",
-        "materialUrl": "https://duaimei.github.io/metamaze/example/obj.mtl",
+        obj: 'http://localhost:3000/mazes/demo.glb',
         display: {
           "scale": "0.94 .5 0.94",
           "position": "0 0 0",

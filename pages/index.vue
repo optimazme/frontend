@@ -90,11 +90,13 @@ interface Data {
 
 interface Methods {
   setCountdownDate: any
+  toggleNavbar: any
 }
 
 interface Components {
   AFrameWrapper: any
   SideBar: any
+  showMenu?: any
 }
 
 interface Props {
@@ -108,7 +110,8 @@ export default Vue.extend<Data, Methods, Components, Props>({
       days: 0,
       hours: 0,
       minutes: 0,
-      seconds: 0
+      seconds: 0,
+      showMenu: true
     }
   },
   mounted() {
@@ -126,22 +129,13 @@ export default Vue.extend<Data, Methods, Components, Props>({
         this.seconds = Math.floor((difference % (1000 * 60)) / 1000);
       },1000);
     },
+    toggleNavbar() {
+      this.showMenu = !this.showMenu;
+    }
   }
 })
 
 </script>
-
-<!-- <script>
-  export default {
-    name: 'IndexPage',
-    methods: {
-      toggleNavbar: function(){
-        this.showMenu = !this.showMenu;
-      }
-    }
-  }
-  
-</script> -->
 
 <style>
   /* .body-container {

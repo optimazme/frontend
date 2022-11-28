@@ -18,7 +18,7 @@
         <img id="floor" :src="pfpSource">
         <a-asset-item id="maze-glb" :src="mazeObj"></a-asset-item>
         <a-entity v-for="(image, index) in showImages" :key="`image-${index}}`">
-          <a-asset-item :id="`image-${index}}`" :src="image.src"></a-asset-item>
+          <a-asset-item :id="`vr-image-${index}`" :src="image.src"></a-asset-item>
         </a-entity>
        
       </a-assets>
