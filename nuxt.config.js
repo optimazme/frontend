@@ -80,7 +80,16 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
-
+  env: {
+    BLOCK_EXPLORER_URL: process.env.BLOCK_EXPLORER_URL,
+    CHAIN_ID: process.env.CHAIN_ID,
+    CHAIN_NAME: process.env.CHAIN_NAME,
+    CURRENCY_SYMBOL: process.env.CURRENCY_SYMBOL,
+    CONTRACT_ADDRESS: process.env.CONTRACT_ADDRESS,
+    NETWORK_NAME: process.env.NETWORK_NAME,
+    SYMBOL_NAME: process.env.SYMBOL_NAME,
+    RPC_URL: process.env.RPC_URL
+  },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
   ],
