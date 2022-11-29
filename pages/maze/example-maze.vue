@@ -7,7 +7,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import ImageInfo from '@/stubs/imagesStub'
-import MazeInfo from'@/utils/exampleMaze'
+import MazeInfo from'@/utils/mazes/exampleMaze'
 
 Vue.config.ignoredElements = [
   'a-entity',
