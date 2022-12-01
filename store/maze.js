@@ -8,7 +8,7 @@ export const state = () => ({
   hasGameEnded: false,
   mazeImages: [],
   minutesLeft: 0,
-  pfpSource: 'http://localhost:3000/maze/demo_floor.png',
+  pfpSource: 'https://www.optimaz.me/maze/demo_floor.png',
   prompt: [],
   showImages: [],
   showNavigation: false,

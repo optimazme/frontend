@@ -83,7 +83,7 @@ export default Vue.extend<Data, Methods, Components, Props>({
         const images = result.map((x: any) => { return x.data.image })
         this.setShowImages(images)
         this.$store.dispatch('maze/setMazeImages', this.setShowImages(images)).then(() => {
-          this.$store.dispatch('maze/setPfpSource', 'http://localhost:3000/mazes/default_dog_pfp.png').then(() => {
+          this.$store.dispatch('maze/setPfpSource', 'https://www.optimaz.me/mazes/default_dog_pfp.png').then(() => {
             const slug = `/maze/${maze.slug}`
             this.$router.push(slug)
           })

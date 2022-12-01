@@ -8,7 +8,7 @@ export default {
     assets: [
       {
         name: 'maze',
-        obj: 'http://localhost:3000/mazes/demo.glb',
+        obj: 'https://www.optimaz.me/mazes/demo.glb',
         display: {
           "scale": "0.94 .5 0.94",
           "position": "0 0 0",
