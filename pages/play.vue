@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <ConnectWallet />
+      <ConnectWallet v-if="!userWallet"/>
     </div>
     <!-- <button @click="startGame('dogs-for-better-lives')">Dogs for Better Lives Maze</button> -->
     <div v-for="(maze, index) in mazes" :key="`maze-${index}`">
@@ -14,8 +14,9 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
+import { mapGetters } from 'vuex'
 import axios from 'axios'
-// declare const window: any
+declare const window: any
 
 interface Data {
 
@@ -27,8 +28,9 @@ interface Methods {
 }
 
 interface Components {
-  ConnectWallet: Object
-  MoreOpensea: Object
+  ConnectWallet?: Object
+  MoreOpensea?: Object
+  isWalletConnected?: Boolean
 }
 
 interface Props {
@@ -36,10 +38,10 @@ interface Props {
 }
 
 interface Computed {
-  foundPhrases: string[]
+  isWalletConnected?: boolean
 }
 
-export default Vue.extend<Data, Methods, Components, Props, Computed>({
+export default Vue.extend<Data, Methods, Components, Props>({
   components: {
     ConnectWallet: () => import('@/components/ConnectWallet.vue'),
     MoreOpensea: () => import('@/components/mazes/MoreOpensea.vue')
@@ -56,6 +58,12 @@ export default Vue.extend<Data, Methods, Components, Props, Computed>({
         }
       ],
       results: []
+    }
+  },
+  computed: {
+    ...mapGetters(['userWallet']),
+    isWalletConnected() {
+      return process.browser ? typeof window.ethereum !== 'undefined' : false
     }
   },
   methods: {
