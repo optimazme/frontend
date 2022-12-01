@@ -13,7 +13,6 @@
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
 
-import ImageInfo from '@/stubs/imagesStub'
 import MazeInfo from'@/utils/mazes/dogsForBetterLivesMaze'
 
 Vue.config.ignoredElements = [
@@ -41,6 +40,7 @@ interface Components {
   EndScreen?: any
   SideBar?: any
   hasGameEnded?: boolean | any
+  mazeImages?: string[] | any
   showGame?: boolean | any
   showImagesLength?: number | any
   foundImagesLength?: number | any
@@ -65,7 +65,7 @@ export default Vue.extend<Data, Methods, Components, Props>({
     }
   },
   computed: {
-     ...mapGetters('maze', ['foundImagesLength', 'hasGameEnded', 'showImagesLength']),
+     ...mapGetters('maze', ['foundImagesLength', 'hasGameEnded', 'mazeImages', 'showImagesLength']),
      showGame(): boolean {
       return !this.hasGameEnded
      }
@@ -81,14 +81,14 @@ export default Vue.extend<Data, Methods, Components, Props>({
 
     
     const locations = MazeInfo.data.locations.sort(() => (Math.random() > .5) ? 1 : -1)
-    const images = ImageInfo.data.images.sort(() => (Math.random() > .5) ? 1 : -1)
+    // const images = this.mazeImages.sort(() => (Math.random() > .5) ? 1 : -1)
     const subject = MazeInfo.data.subjects.sort(() => (Math.random() > .5) ? 1 : -1)
     const prompt = MazeInfo.data.prompts.sort(() => (Math.random() > .5) ? 1 : -1)
-    const chosenPrompt = prompt[0]
+    const chosenPrompt = prompt[0].sort(() => (Math.random() > .5) ? 1 : -1)
 
-    const shownImages = images.map((image, index) => {
+    const shownImages = this.mazeImages.map((image: string, index: number) => {
       return {
-        src: image.src,
+        src: image.replace('nftstorage.link','ipfs.io'),
         displayInfo: locations[index],
         word: chosenPrompt[index]
       }

@@ -15,7 +15,7 @@
     </div>
     <div class="h-96 w-full overflow-y-auto">
       <div v-for="(image, index) in foundImages" :key="`side-image-${index}`" class="w-60 flex flex-col md:flex-row">
-        <NuxtImg class="w-20" :src="image.src" />
+        <img :src="image.src" class="w-20 h-20"/>
         <span>{{image.word}}</span>
       </div>
     </div>

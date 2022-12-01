@@ -9,6 +9,7 @@
         <NuxtImg :src="maze.img" :alt="`${maze.name} Game Pass`" />
       </button>
     </div>
+    <MoreOpensea />
   </div>
 </template>
 <script lang="ts">
@@ -21,11 +22,13 @@ interface Data {
 }
 
 interface Methods {
-
+  setShowImages: any
+  startGame: any
 }
 
 interface Components {
   ConnectWallet: Object
+  MoreOpensea: Object
 }
 
 interface Props {
@@ -38,7 +41,8 @@ interface Computed {
 
 export default Vue.extend<Data, Methods, Components, Props, Computed>({
   components: {
-    ConnectWallet: () => import('@/components/ConnectWallet.vue')
+    ConnectWallet: () => import('@/components/ConnectWallet.vue'),
+    MoreOpensea: () => import('@/components/mazes/MoreOpensea.vue')
   },
   data() {
     return {
@@ -47,20 +51,35 @@ export default Vue.extend<Data, Methods, Components, Props, Computed>({
           name: 'Dogs For Better Lives',
           slug: 'dogs-for-better-lives',
           img: '/mazes/mysterious_dogs_for_better_lives.png',
-          openSeaCollection: 'dfbl-ai'
+          openSeaCollection: 'dfbl-ai',
+          niftyKitApi: process.env.NIFTY_DOG_AI_API_KEY
         }
       ],
       results: []
     }
   },
   methods: {
+    setShowImages(images: string[]) {
+      const randomized = images.sort(() => (Math.random() > .5) ? 1 : -1)
+      return randomized.slice(0, 20)
+    },
     startGame(maze: object | any) {
-      axios.get(`https://testnets-api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=100&collection=${maze.openSeaCollection}&include_orders=false`).then((response: any) => {
-        console.log({response})
-        // this.results = response.data.assets
-        this.$store.dispatch('maze/setPfpSource', 'http://localhost:3000/mazes/default_dog_pfp.png').then(() => {
-          // this.$router.push(`/maze/${maze.slug}`)
-        })
+      const url = 'https://api.niftykit.com/drops/tokens'
+      const config = {
+        headers: {
+          'x-api-key': maze.niftyKitApi
+        } 
+      }
+      axios.get(url, config).then((response: any) => {
+        const result = response.data.data
+        const images = result.map((x: any) => { return x.data.image })
+        this.setShowImages(images)
+        this.$store.dispatch('maze/setMazeImages', this.setShowImages(images)).then(() => {
+          this.$store.dispatch('maze/setPfpSource', 'http://localhost:3000/mazes/default_dog_pfp.png').then(() => {
+            const slug = `/maze/${maze.slug}`
+            this.$router.push(slug)
+          })
+        })     
       })
       
     }
