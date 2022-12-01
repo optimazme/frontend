@@ -87,6 +87,8 @@ export default {
     CURRENCY_SYMBOL: process.env.CURRENCY_SYMBOL,
     CONTRACT_ADDRESS: process.env.CONTRACT_ADDRESS,
     NETWORK_NAME: process.env.NETWORK_NAME,
+    NIFTY_DOG_AI_API_KEY: process.env.NIFTY_DOG_AI_API_KEY,
+    OPENSEA_API_KEY: process.env.OPENSEA_API_KEY,
     SYMBOL_NAME: process.env.SYMBOL_NAME,
     RPC_URL: process.env.RPC_URL
   },

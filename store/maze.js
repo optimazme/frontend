@@ -6,8 +6,9 @@ export const state = () => ({
   foundPhrases: [],
   gameEndTime: null,
   hasGameEnded: false,
+  mazeImages: [],
   minutesLeft: 0,
-  pfpSource: 'http://localhost:3000/maze/demo_floor.png',
+  pfpSource: 'https://www.optimaz.me/maze/demo_floor.png',
   prompt: [],
   showImages: [],
   showNavigation: false,
@@ -23,6 +24,7 @@ export const getters = {
   foundPhrases: state => state.foundPhrases,
   gameEndTime: state => state.gameEndTime,
   hasGameEnded: state => state.hasGameEnded,
+  mazeImages: state => state.mazeImages,
   minutesLeft: state => state.minutesLeft,
   pfpSource: state => state.pfpSource,
   prompt: state => state.prompt,
@@ -58,6 +60,9 @@ export const actions = {
   },
   setFoundPhrases({ commit }, phrases) {
     commit('SET_FOUND_PHRASES', phrases)
+  },
+  setMazeImages({commit}, images) {
+    commit('SET_MAZE_IMAGES', images)
   },
   setPfpSource({ commit }, src) {
     commit('SET_PFP_SOURCE', src)
@@ -105,6 +110,9 @@ export const mutations = {
     phrases.unshift(state.subject)
     
     state.foundPhrases = phrases
+  },
+  SET_MAZE_IMAGES(state, images) {
+    state.mazeImages = images
   },
   SET_PFP_SOURCE(state, src) {
     state.pfpSource = src
