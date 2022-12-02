@@ -6,9 +6,10 @@
     <!-- <button @click="startGame('dogs-for-better-lives')">Dogs for Better Lives Maze</button> -->
     <div v-for="(maze, index) in mazes" :key="`maze-${index}`">
       <button @click="startGame(maze)">
-        <NuxtImg :src="maze.img" :alt="`${maze.name} Game Pass`" />
+        <NuxtImg :src="`${baseUrl}/${maze.img}`" :alt="`${maze.name} Game Pass`" />
       </button>
     </div>
+    <MoreOpensea />
   </div>
 </template>
 <script lang="ts">
@@ -27,7 +28,6 @@ interface Methods {
 }
 
 interface Components {
-  baseUrl?: string
   ConnectWallet?: Object
   MoreOpensea?: Object
   isWalletConnected?: Boolean
@@ -37,13 +37,10 @@ interface Props {
 
 }
 
-interface Computed {
-  isWalletConnected?: boolean
-}
-
 export default Vue.extend<Data, Methods, Components, Props>({
   components: {
-    ConnectWallet: () => import('@/components/ConnectWallet.vue')
+    ConnectWallet: () => import('@/components/ConnectWallet.vue'),
+    MoreOpensea: () => import('@/components/mazes/MoreOpensea.vue')
   },
   data() {
     return {
@@ -51,7 +48,7 @@ export default Vue.extend<Data, Methods, Components, Props>({
         {
           name: 'Dogs For Better Lives',
           slug: 'dogs-for-better-lives',
-          img: '/mazes/mysterious_dogs_for_better_lives.png',
+          img: 'mazes/mysterious_dogs_for_better_lives.png',
           openSeaCollection: 'dfbl-ai',
           niftyKitApi: process.env.NIFTY_DOG_AI_API_KEY
         }
@@ -60,7 +57,7 @@ export default Vue.extend<Data, Methods, Components, Props>({
     }
   },
   computed: {
-    ...mapGetters(['baseUrl','userWallet']),
+    ...mapGetters(['baseUrl', 'userWallet']),
     isWalletConnected() {
       return process.browser ? typeof window.ethereum !== 'undefined' : false
     }
@@ -71,8 +68,6 @@ export default Vue.extend<Data, Methods, Components, Props>({
       return randomized.slice(0, 20)
     },
     startGame(maze: object | any) {
-      const gamePass = `${this.baseUrl}/mazes/default_dog_pfp.png`
-      
       const url = 'https://api.niftykit.com/drops/tokens'
       const config = {
         headers: {
@@ -84,8 +79,10 @@ export default Vue.extend<Data, Methods, Components, Props>({
         const images = result.map((x: any) => { return x.data.image })
         this.setShowImages(images)
         this.$store.dispatch('maze/setMazeImages', this.setShowImages(images)).then(() => {
-          this.$store.dispatch('maze/setPfpSource', gamePass).then(() => {
-            this.$router.push(`/maze/${maze.slug}`)
+          this.$store.dispatch('maze/setPfpSource', '/mazes/default_dog_pfp.png').then(() => {
+            const slug = `/maze/${maze.slug}`
+            console.log(`pushing this as the router: ${slug}`)
+            this.$router.push(slug)
           })
         })     
       })

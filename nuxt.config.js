@@ -81,6 +81,7 @@ export default {
   css: [
   ],
   env: {
+    BASE_URL: process.env.BASE_URL,
     BLOCK_EXPLORER_URL: process.env.BLOCK_EXPLORER_URL,
     CHAIN_ID: process.env.CHAIN_ID,
     CHAIN_NAME: process.env.CHAIN_NAME,
@@ -88,6 +89,7 @@ export default {
     CONTRACT_ADDRESS: process.env.CONTRACT_ADDRESS,
     NETWORK_NAME: process.env.NETWORK_NAME,
     NIFTY_DOG_AI_API_KEY: process.env.NIFTY_DOG_AI_API_KEY,
+    NODE_ENV: process.env.NODE_ENV,
     OPENSEA_API_KEY: process.env.OPENSEA_API_KEY,
     SYMBOL_NAME: process.env.SYMBOL_NAME,
     RPC_URL: process.env.RPC_URL

@@ -16,7 +16,7 @@
     <!-- ASSETS -->
       <a-assets>
         <img id="floor" :src="pfpSource">
-        <a-asset-item id="maze-glb" :src="mazeObj"></a-asset-item>
+        <a-asset-item id="maze-glb" :src="maze"></a-asset-item>
         <a-entity v-for="(image, index) in showImages" :key="`image-${index}}`">
           <a-asset-item :id="`vr-image-${index}`" :src="image.src"></a-asset-item>
         </a-entity>
@@ -73,7 +73,6 @@ Vue.config.ignoredElements = [
 ]
 
 interface Data {
-  mazeObj: string
 }
 
 interface Methods {
@@ -89,6 +88,7 @@ interface Components {
 interface Props {
   canvasWidth: number
   canvasHeight: number
+  maze: string
 }
 
 export default Vue.extend<Data, Methods, Components, Props>({
@@ -100,11 +100,10 @@ export default Vue.extend<Data, Methods, Components, Props>({
     canvasHeight: {
       type: Number,
       default: 500
-    }
-  },
-  data() {
-    return {
-      mazeObj: 'https://www.optimaz.me/mazes/demo.glb'
+    },
+    maze: {
+      type: String,
+      default: 'http://localhost:3000/mazes/demo.glb'
     }
   },
   computed: {

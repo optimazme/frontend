@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="showGame" :key="`game-${hasGameEnded}`" class="h-screen flex flex-col-reverse sm:flex-row">
-      <AFrameWrapper :canvas-width="windowWidth" :canvas-height="windowHeight" />
+      <AFrameWrapper :canvas-width="windowWidth" :canvas-height="windowHeight" :maze="mazeObj"/>
       <SideBar />
     </div>
     <div v-else :class="showGame ? '' : 'bg-red'">
@@ -37,10 +37,12 @@ interface Methods {
 
 interface Components {
   AFrameWrapper?: any
+  baseUrl?: string | any
   EndScreen?: any
   SideBar?: any
   hasGameEnded?: boolean | any
   mazeImages?: string[] | any
+  mazeObj?: string | any
   showGame?: boolean | any
   showImagesLength?: number | any
   foundImagesLength?: number | any
@@ -65,10 +67,14 @@ export default Vue.extend<Data, Methods, Components, Props>({
     }
   },
   computed: {
-     ...mapGetters('maze', ['foundImagesLength', 'hasGameEnded', 'mazeImages', 'showImagesLength']),
-     showGame(): boolean {
-      return !this.hasGameEnded
-     }
+    ...mapGetters(['baseUrl']),
+    ...mapGetters('maze', ['foundImagesLength', 'hasGameEnded', 'mazeImages', 'showImagesLength']),
+    showGame(): boolean {
+    return !this.hasGameEnded
+    },
+    mazeObj() {
+    return !!MazeInfo ? `${this.baseUrl}/${MazeInfo.data.mazeSlug}` : ''
+    }
   },
   mounted() {
     // making aframe reactive

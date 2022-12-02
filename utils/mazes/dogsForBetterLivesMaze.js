@@ -5,10 +5,11 @@ export default {
     mazeImageCount: 20,
     aiCollection: '',
     revealGamePassImage: 'mysterious_dogs_for_better_lives.png',
+    mazeSlug: 'mazes/demo.glb',
     assets: [
       {
         name: 'maze',
-        obj: 'https://www.optimaz.me/mazes/demo.glb',
+        obj: 'http://localhost:3000/mazes/demo.glb',
         display: {
           "scale": "0.94 .5 0.94",
           "position": "0 0 0",
@@ -75,9 +76,9 @@ export default {
       'Setter',
       'King Charles Spaniel',
       'Labrador Retriever',
-      'Maltese',
+      'Maltese dog',
       'Newfoundland',
-      'Pointer',
+      'Pointer dog',
       'Deerhound',
       'Papillon',
       'Pekingese',
