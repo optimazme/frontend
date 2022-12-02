@@ -78,6 +78,7 @@ export default Vue.extend<Data, Methods, Components, Props>({
         const contract = new web3.eth.Contract(ABI, contractAddress)
         const price = await contract.methods.price().call()
         console.log({ price })
+        console.log({ methods: contract.methods })
       }
       
     }

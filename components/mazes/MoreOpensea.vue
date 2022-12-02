@@ -2,18 +2,28 @@
   <div>
     <h2>More from Optimaz</h2>
     <div class="grid grid-cols-3">
-      <div v-for="(asset, index) in assets" :key="`asset-${index}`">
-      <img :src="asset.image_url" :alt="asset.name" />
-      <div v-if="listings.length > 0"> 
-        <div>{{formatPrice(listings[index].current_price)}} ETH</div>
-        <button @click="buyNft(listings[index].current_price)">Buy Now</button>
-      </div>
-     
+      <div v-for="(listing, index) in listings" :key="`listing-${index}`">
+      <img :src="listing.maker_asset_bundle.assets[0].image_url" :alt="listing.maker_asset_bundle.assets[0].name" />
+      <div>
+        <div>{{formatPrice(listing.current_price)}} ETH</div>
+        <button @click="buyNft(listing)">Buy Now</button>
+      </div>        
     </div>
     </div>
-    <pre v-for="(asset, index) in assets" :key="`asset-info-${index}`">
-      {{listings}}
-    </pre>
+    <!-- <h2>Asset</h2>
+    <div v-if="assets">
+      <!-- tokenId: {{assets[0].token_id}} -->
+    <!-- </div>
+    <pre>{{assets[0]}}</pre> -->
+    <h2>listing</h2>
+    <div v-if="listings">
+      <!-- <pre>{{listings[0].protocol_data.parameters.offer[0].identifierOrCriteria}}</pre> -->
+      <pre>{{listings[0]}}</pre>
+    </div>
+    
+    <!-- <div v-for="(listing, index) in listings" :key="`listing-${index}`">
+      <pre>{{listing.protocol_data}}</pre>
+    </div> -->
   </div>
 </template>
 <script lang="ts">
@@ -69,15 +79,23 @@ export default Vue.extend<Data, Methods, Components, Props>({
       const tokenIds = assets.map((x: any) => {return `&token_ids=${x.token_id}`}).join('')
       const listingUrl = `https://api.opensea.io/v2/orders/ethereum/seaport/listings?asset_contract_address=0x495f947276749ce646f68ac8c248420045cb7b5e${tokenIds}&order_by=created_date&order_direction=desc`
       axios.get(listingUrl, config).then((response: any) => {
-        this.listings = response.data.orders
+        const listings = response.data.orders
+        // listings.forEach((listing:any, index: number) => {
+        //   const tokenId = listing.protocol_data.parameters.offer[0].identifierOrCriteria
+        //   const asset = assets.find((asset: any) => asset.token_id === tokenId)
+        //   listings[index].imgUrl = asset.image_url
+        //   listings[index].name = asset.name
+        // });
+        // console.log({listings})
+
+        this.listings = listings
       })
     })
   },
   methods: {
-    buyNft(currentPrice: string) {
-      console.log({ currentPrice })
+    buyNft(listing: Object) {
+      console.log({ listing })
       if (typeof window.ethereum !== "undefined") {
-        console.log('has window.ethereum')
       const provider = new ethers.providers.Web3Provider(window.ethereum)
       const signer = provider.getSigner()
       // const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, signer)
