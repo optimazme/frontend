@@ -5,7 +5,7 @@
     <!-- <div>total NFTs {{ totalNftSupply }}</div>
     <div>token <pre>{{token}}</pre></div> -->
     <button @click="signNft">Sign</button>
-    <MoreOpenSea />
+    <!-- <MoreOpenSea /> -->
   </div>
 </template>
 <script lang="ts">
@@ -35,7 +35,7 @@ interface Components {
   isWalletConnected?: Boolean,
   gamePassABI?: any
   userWallet?: any
-  moreOpensea?: any
+  // moreOpensea?: any
   
 }
 
@@ -44,7 +44,7 @@ interface Props {
 }
 export default Vue.extend<Data, Methods, Components, Props>({
     components: {
-      MoreOpenSea: () => import('@/components/mazes/MoreOpensea.vue')
+      // MoreOpenSea: () => import('@/components/mazes/MoreOpensea.vue')
     },
     data() {
       return {
@@ -54,7 +54,8 @@ export default Vue.extend<Data, Methods, Components, Props>({
         totalNftSupply: null,
         web3: null,
         price: '',
-        token: null
+        token: null,
+        error: null
       }
     },
     computed: {
@@ -69,8 +70,8 @@ export default Vue.extend<Data, Methods, Components, Props>({
 
           // console.log(this.gamePassContract.methods)
 
-          // const nftPrice = this.nftPrice()
-          // nftPrice.then((price: string) => {this.price = price})
+          const nftPrice = this.nftPrice()
+          nftPrice.then((price: string) => {this.price = price})
           // const total = this.totalSupply()
           // total.then((total: string | number) => {this.totalNftSupply = total})
           // const token = this.findToken(0)
@@ -108,9 +109,28 @@ export default Vue.extend<Data, Methods, Components, Props>({
         }
       },
       async signNft() {
-        const accounts = await this.web3.eth.requestAccounts()
-        const account = accounts[0]
-        this.web3.eth.sign('signing message', account)
+        if (process.browser) {
+          const accounts = await this.web3.eth.requestAccounts()
+          const account = accounts[0]
+          // make a transaction
+
+          // sign a transaction
+          const signPromise = this.web3.signTransaction()
+          // this.web3.eth.sendTransaction({
+          //   from: account,
+          //   to: this.gamePassContractAddress,
+          //   value: this.price,
+          //   function(err: any, transactionHash: string | any) {
+          //     if(!err) {
+          //       console.log(transactionHash + 'success')
+          //     } else {
+          //       this.error = err
+          //     }
+          //   }
+          // })
+        }
+        
+        // this.web3.eth.sign('signing message', account)
       }
     },
 })
