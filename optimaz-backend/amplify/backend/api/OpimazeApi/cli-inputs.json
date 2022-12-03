@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "paths": {
+    "/": {
+      "name": "/",
+      "lambdaFunction": "frontend69abea28",
+      "permissions": {
+        "setting": "protected",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ],
+        "guest": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    },
+    "/getAiImage": {
+      "name": "/getAiImage",
+      "lambdaFunction": "frontend69abea28",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/updateToken": {
+      "name": "/updateToken",
+      "lambdaFunction": "frontend69abea28",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "niftykitApiKey",
+      "environmentVariableName": "NIFTYKIT_API_KEY"
+    },
+    {
+      "cloudFormationParameterName": "bananaApiKey",
+      "environmentVariableName": "BANANA_API_KEY"
+    },
+    {
+      "cloudFormationParameterName": "stabilityAiModel",
+      "environmentVariableName": "STABILITY_AI_MODEL"
+    },
+    {
+      "cloudFormationParameterName": "pinataJwt",
+      "environmentVariableName": "PINATA_JWT"
+    }
+  ]
+}
