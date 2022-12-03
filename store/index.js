@@ -1,5 +1,6 @@
 export const state = () => ({
   baseUrl: process.env.BASE_URL,
+  baseBackendUrl: process.env.BASE_BACKEND_URL,
   blockExplorerUrl: process.env.BLOCK_EXPLORER_URL,
   chainId: process.env.CHAIN_ID,
   chainName: process.env.CHAIN_NAME,
@@ -16,6 +17,7 @@ export const state = () => ({
 
 export const getters = {
   baseUrl: (state) => state.baseUrl,
+  baseBackendUrl: (state) => state.baseBackendUrl,
   blockExplorerUrl: (state) => state.blockExplorerUrl,
   chainId: (state) => state.chainId,
   chainName: (state) => state.chainName,

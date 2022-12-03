@@ -73,7 +73,8 @@ export default {
     script: [
       { src: 'https://aframe.io/releases/1.3.0/aframe.min.js', ssr: false },
       { src: 'https://unpkg.com/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js', ssr: false },
-      { src: 'https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js', ssr: false }
+      { src: 'https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js', ssr: false },
+      { src: "https://unpkg.com/@niftykit/components/dist/components/components.esm.js", ssr: false }
     ],
   },
 
@@ -82,6 +83,7 @@ export default {
   ],
   env: {
     BASE_URL: process.env.BASE_URL,
+    BASE_BACKEND_URL: process.env.BASE_BACKEND_URL,
     BLOCK_EXPLORER_URL: process.env.BLOCK_EXPLORER_URL,
     CHAIN_ID: process.env.CHAIN_ID,
     CHAIN_NAME: process.env.CHAIN_NAME,

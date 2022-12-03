@@ -4,17 +4,29 @@
       <ConnectWallet v-if="!userWallet"/>
     </div>
     <!-- <button @click="startGame('dogs-for-better-lives')">Dogs for Better Lives Maze</button> -->
-    <div v-for="(maze, index) in mazes" :key="`maze-${index}`">
-      <button @click="startGame(maze)">
-        <NuxtImg :src="maze.img" :alt="`${maze.name} Game Pass`" />
-      </button>
+    <div v-if="hasGamePass">
+      <div v-for="(maze, index) in mazes" :key="`maze-${index}`">
+        <button @click="startGame(maze)">
+          Play {{maze.name}} maze
+        </button>
+      </div>
     </div>
+    <div v-else>
+      <div v-for="(maze, index) in mazes" :key="`buy-pass-${index}`">
+        <a href="https://app.niftykit.com/drops/optimaz-game-pass-dogs-for-better-lives" target="_">
+          <NuxtImg src="/mazes/MysteryDogMint.png" alt="purchase a game pass"/>
+        </a>
+      </div>
+    </div>
+    
+    <!-- <nk-dropkit apikey="sM0ZpGbsJs8eoQpCmoGR" /> -->
   </div>
 </template>
 <script lang="ts">
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
 import axios from 'axios'
+// import { nkDropKit } from ''
 declare const window: any
 
 interface Data {
@@ -31,6 +43,7 @@ interface Components {
   ConnectWallet?: Object
   MoreOpensea?: Object
   isWalletConnected?: Boolean
+  hasGamePass?: boolean
 }
 
 interface Props {
@@ -63,6 +76,9 @@ export default Vue.extend<Data, Methods, Components, Props>({
     ...mapGetters(['baseUrl','userWallet']),
     isWalletConnected() {
       return process.browser ? typeof window.ethereum !== 'undefined' : false
+    },
+    hasGamePass() {
+      return process.browser ? typeof window.ethereum !== 'undefined' : false
     }
   },
   methods: {
@@ -94,3 +110,9 @@ export default Vue.extend<Data, Methods, Components, Props>({
   }
 })
 </script>
+
+<style> 
+.web3modal-modal-lightbox { z-index: 999 !important; }
+.web3modal-modal-container { z-index: 999 !important; }
+.web3modal-modal-card { z-index: 999 !important; }
+</style>

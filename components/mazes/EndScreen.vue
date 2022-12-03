@@ -8,7 +8,7 @@
          <div class="grid grid-cols-5">
           <div v-for="phrase in foundPhrases" :key="phrase" class="bg-gray-400 p-4 m-3 rounded-md h-16 justify-center">{{phrase}}</div>
         </div>
-        <button class="bg-blue-700 text-white text-5xl justify-center text-center mx-12 w-3/4 rounded-md">Mint Now</button>
+        <button class="bg-blue-700 text-white text-5xl justify-center text-center mx-12 w-3/4 rounded-md" @click="mintImage">Mint Now</button>
         <div class="grid grid-cols-2 gap-1">
           <div v-for="(image, index) in foundImages" :key="`image-${index}`" class="col-2">
             <span>
@@ -25,10 +25,30 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
+import axios from 'axios'
 
 export default Vue.extend({
   computed: {
+    ...mapGetters(['baseBackendUrl']),
     ...mapGetters('maze', ['foundImages', 'foundPhrases', 'pfpSource'])
+  },
+  methods: {
+    mintImage() {
+      const options = {
+
+          prompt: this.foundPhrases.join(",")
+
+      }
+      console.log('got here')
+      return axios
+      .post(`${this.baseBackendUrl}/getAiImage`, options)
+      .then((response) => {
+        return response.data.body.uri
+      })
+      .catch((error) => {
+        return error
+      })
+    }
   }
 })
 </script>
