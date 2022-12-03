@@ -2,7 +2,7 @@ Notes to Solidity Contracts
 
 The contracts are stored here https://github.com/optimazme/Solidity-Contracts
 
-The structure of the contracts is that the Lottery.sol file imports the VRF.sol file.
+The structure of the contracts is that the Lottery.sol file imports the VRF.sol file and that the Lottery.sol contract will interact with the NiftyKit contract.
 However, we faced serious technical difficulties that are externally caused as below.
 
 1, Chainlink VRF does not work on Optimism. And Portal VRF (https://portal-docs.readthedocs.io/en/latest/user-vrf-docs.html) only worked on Optimism Goerli and did not
