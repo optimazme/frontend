@@ -30,6 +30,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import { mapGetters } from 'vuex'
+import Web3 from 'web3'
 import { ethers } from 'ethers'
 declare const window: any
 
@@ -93,11 +94,18 @@ export default Vue.extend<Data, Methods, Components, Props>({
     })
   },
   methods: {
-    buyNft(listing: Object) {
+    async buyNft(listing: Object) {
       console.log({ listing })
-      if (typeof window.ethereum !== "undefined") {
-      const provider = new ethers.providers.Web3Provider(window.ethereum)
-      const signer = provider.getSigner()
+      if (process.browser && typeof window.ethereum !== "undefined") {
+        const web3 = new Web3(window.ethereum)
+        const accounts = await web3.eth.requestAccounts()
+        const account = accounts[0]
+        console.log({ account })
+        // web3.eth.signTransaction(listing, account)
+        web3.eth.sign(listing.toString(), account)
+
+      // const provider = new ethers.providers.Web3Provider(window.ethereum)
+      // const signer = provider.getSigner()
       // const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, signer)
       // try {
       //   const transactionResponse = await contract.fund({

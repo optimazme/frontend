@@ -1,87 +1,117 @@
 <template>
   <div>
-    <div>
-      <ConnectWallet v-if="!userWallet"/>
-    </div>
-    <div>
-      <button @click="buyImage">buy thing?</button>
-    </div>
-    <!-- <button @click="startGame('dogs-for-better-lives')">Dogs for Better Lives Maze</button> -->
-    <MoreOpensea />
+    <h2>doodles</h2>
+    <div>price {{price}}</div>
+    <!-- <div>total NFTs {{ totalNftSupply }}</div>
+    <div>token <pre>{{token}}</pre></div> -->
+    <button @click="signNft">Sign</button>
+    <MoreOpenSea />
   </div>
 </template>
 <script lang="ts">
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
-// import axios from 'axios'
-
-import { Seaport } from "@opensea/seaport-js";
-import { ethers } from "ethers";
 import Web3 from 'web3'
-
 declare const window: any
-
-const provider: any = process.browser ? new ethers.providers.Web3Provider(window.ethereum) : null
-
-const seaport = process.browser ? new Seaport(provider) : ''
-
 interface Data {
-
+  gamePassABIJson: any
+  gamePassContractAddress: any
+  gamePassContract: any
+  totalNftSupply: any
+  web3: any
+  price: any
+  token: any
 }
 
 interface Methods {
-  buyImage: any
+  nftPrice?: any
+  totalSupply?: any
+  findToken?: any
+  signNft?: any
 }
 
 interface Components {
   ConnectWallet?: Object
-  MoreOpensea?: Object
-  isWalletConnected?: Boolean
+  isWalletConnected?: Boolean,
+  gamePassABI?: any
+  userWallet?: any
+  moreOpensea?: any
+  
 }
 
 interface Props {
 
 }
-
 export default Vue.extend<Data, Methods, Components, Props>({
-  components: {
-    ConnectWallet: () => import('@/components/ConnectWallet.vue'),
-    MoreOpensea: () => import('@/components/mazes/MoreOpensea.vue')
-  },
-  data() {
-    return {
-      mazes: [
-        {
-          name: 'Dogs For Better Lives',
-          slug: 'dogs-for-better-lives',
-          img: 'mazes/mysterious_dogs_for_better_lives.png',
-          openSeaCollection: 'dfbl-ai',
-          niftyKitApi: process.env.NIFTY_DOG_AI_API_KEY
-        }
-      ],
-      results: []
-    }
-  },
-  computed: {
-    ...mapGetters(['baseUrl', 'userWallet']),
-    isWalletConnected() {
-      return process.browser ? typeof window.ethereum !== 'undefined' : false
-    }
-  },
-  methods: {
-    async buyImage() {
-      if (process.browser) {
-        let web3 = new Web3(window.ethereum)
-        const contractAddress = '0xfa0a32DC5b43395752bEC3a955E16874E8a1e293'
-        const ABI = JSON.parse(`[{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"NewOwnerIsZeroAddress","type":"error"},{"inputs":[],"name":"NoHandoverRequest","type":"error"},{"inputs":[],"name":"Unauthorized","type":"error"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint8","name":"version","type":"uint8"}],"name":"Initialized","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"operator","type":"bytes32"},{"indexed":false,"internalType":"bool","name":"allowed","type":"bool"}],"name":"OperatorAllowed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"operator","type":"bytes32"},{"indexed":false,"internalType":"bool","name":"blocked","type":"bool"}],"name":"OperatorBlocked","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"pendingOwner","type":"address"}],"name":"OwnershipHandoverCanceled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"pendingOwner","type":"address"}],"name":"OwnershipHandoverRequested","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"oldOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":true,"internalType":"uint256","name":"roles","type":"uint256"}],"name":"RolesUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"ADMIN_ROLE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"BURNER_ROLE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MANAGER_ROLE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint64[]","name":"quantities","type":"uint64[]"},{"internalType":"address[]","name":"recipients","type":"address[]"}],"name":"batchAirdrop","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"cancelOwnershipHandover","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"pendingOwner","type":"address"}],"name":"completeOwnershipHandover","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"uint256","name":"roles","type":"uint256"}],"name":"grantRoles","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"uint256","name":"roles","type":"uint256"}],"name":"hasAllRoles","outputs":[{"internalType":"bool","name":"result","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"uint256","name":"roles","type":"uint256"}],"name":"hasAnyRole","outputs":[{"internalType":"bool","name":"result","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner_","type":"address"},{"internalType":"string","name":"name_","type":"string"},{"internalType":"string","name":"symbol_","type":"string"},{"internalType":"address","name":"treasury_","type":"address"},{"internalType":"address","name":"royalty_","type":"address"},{"internalType":"uint96","name":"royaltyFee_","type":"uint96"}],"name":"initialize","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maxAmount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maxPerMint","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maxPerWallet","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint64","name":"quantity","type":"uint64"}],"name":"mint","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint64","name":"quantity","type":"uint64"}],"name":"mintTo","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"roles","type":"uint256"}],"name":"ordinalsFromRoles","outputs":[{"internalType":"uint8[]","name":"ordinals","type":"uint8[]"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"result","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"pendingOwner","type":"address"}],"name":"ownershipHandoverExpiresAt","outputs":[{"internalType":"uint256","name":"result","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"ownershipHandoverValidFor","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"presaleActive","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint64","name":"quantity","type":"uint64"},{"internalType":"uint256","name":"allowed","type":"uint256"},{"internalType":"bytes32[]","name":"proof","type":"bytes32[]"}],"name":"presaleMint","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint64","name":"quantity","type":"uint64"},{"internalType":"uint256","name":"allowed","type":"uint256"},{"internalType":"bytes32[]","name":"proof","type":"bytes32[]"}],"name":"presaleMintTo","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"price","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"roles","type":"uint256"}],"name":"renounceRoles","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"requestOwnershipHandover","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"},{"internalType":"uint256","name":"roles","type":"uint256"}],"name":"revokeRoles","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint8[]","name":"ordinals","type":"uint8[]"}],"name":"rolesFromOrdinals","outputs":[{"internalType":"uint256","name":"roles","type":"uint256"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"rolesOf","outputs":[{"internalType":"uint256","name":"roles","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tokenId","type":"uint256"},{"internalType":"uint256","name":"_salePrice","type":"uint256"}],"name":"royaltyInfo","outputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},
-        {"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"saleActive","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"newBaseURI","type":"string"}],"name":"setBaseURI","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"receiver","type":"address"},{"internalType":"uint96","name":"feeNumerator","type":"uint96"}],"name":"setDefaultRoyalty","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"newRoot","type":"bytes32"}],"name":"setMerkleRoot","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bool","name":"value","type":"bool"}],"name":"setOperatorFilteringEnabled","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"address","name":"receiver","type":"address"},{"internalType":"uint96","name":"feeNumerator","type":"uint96"}],"name":"setTokenRoyalty","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newTreasury","type":"address"}],"name":"setTreasury","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newMaxAmount","type":"uint256"},{"internalType":"uint256","name":"newMaxPerMint","type":"uint256"},{"internalType":"uint256","name":"newMaxPerWallet","type":"uint256"},{"internalType":"uint256","name":"newPrice","type":"uint256"},{"internalType":"bool","name":"presale","type":"bool"}],"name":"startSale","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"stopSale","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenOfOwnerByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalRevenue","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"treasury","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"withdraw","outputs":[],"stateMutability":"nonpayable","type":"function"}]`)
-        const contract = new web3.eth.Contract(ABI, contractAddress)
-        const price = await contract.methods.price().call()
-        console.log({ price })
-        console.log({ methods: contract.methods })
+    components: {
+      MoreOpenSea: () => import('@/components/mazes/MoreOpensea.vue')
+    },
+    data() {
+      return {
+        gamePassABIJson: null,
+        gamePassContractAddress: '0xfa0a32DC5b43395752bEC3a955E16874E8a1e293',
+        gamePassContract: null,
+        totalNftSupply: null,
+        web3: null,
+        price: '',
+        token: null
       }
-      
-    }
-  }
+    },
+    computed: {
+      ...mapGetters('seaDrop', ['gamePassABI']),
+      ...mapGetters(['userWallet']),
+    },
+    mounted() {
+      if (process.browser) {
+          this.web3 = new Web3(window.ethereum)
+          this.gamePassABIJson = JSON.parse(this.gamePassABI)
+          this.gamePassContract = new this.web3.eth.Contract(this.gamePassABIJson, this.gamePassContractAddress)
+
+          // console.log(this.gamePassContract.methods)
+
+          // const nftPrice = this.nftPrice()
+          // nftPrice.then((price: string) => {this.price = price})
+          // const total = this.totalSupply()
+          // total.then((total: string | number) => {this.totalNftSupply = total})
+          // const token = this.findToken(0)
+          // token.then((token: any) => {this.token = token})
+      }
+    },
+    methods: {
+      async nftPrice(): Promise<any> {
+        if(this.gamePassContract) {
+          const price = await this.gamePassContract.methods.price().call()
+          console.log({price})
+          return price
+        } else {
+          return ''
+        }     
+      },
+      async totalSupply(): Promise<any> {
+        if(this.gamePassContract) {
+          const total = await this.gamePassContract.methods.totalSupply().call()
+          console.log({total})
+          return total
+        }
+        else {
+          return 0
+        }
+      },
+      async findToken(index: number) {
+        if(this.gamePassContract) {
+          const token = await this.gamePassContract.methods.tokenByIndex(index).call()
+          console.log({token})
+          return token
+        }
+        else {
+          return null
+        }
+      },
+      async signNft() {
+        const accounts = await this.web3.eth.requestAccounts()
+        const account = accounts[0]
+        this.web3.eth.sign('signing message', account)
+      }
+    },
 })
 </script>
