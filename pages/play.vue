@@ -3,7 +3,7 @@
     <div>
       <ConnectWallet v-if="!userWallet"/>
     </div>
-    <!-- <button @click="startGame('dogs-for-better-lives')">Dogs for Better Lives Maze</button> -->
+    <button @click="startGame('dogs-for-better-lives')">Dogs for Better Lives Maze</button>
     <div v-if="hasGamePass">
       <div v-for="(maze, index) in mazes" :key="`maze-${index}`">
         <button @click="startGame(maze)">

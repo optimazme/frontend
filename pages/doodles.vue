@@ -13,8 +13,10 @@ import Vue from 'vue'
 import { mapGetters } from 'vuex'
 import { ethers } from 'ethers'
 import Web3 from 'web3'
+
 declare const window: any
 interface Data {
+  dogAiArtAddress: string
   gamePassABIJson: any
   gamePassContractAddress: any
   gamePassContract: any
@@ -36,9 +38,9 @@ interface Methods {
 
 interface Components {
   ConnectWallet?: Object
+  generativeAbi?: any
   isWalletConnected?: Boolean,
   gamePassABI?: any
-  userWallet?: any
   // moreOpensea?: any
   
 }
@@ -53,7 +55,8 @@ export default Vue.extend<Data, Methods, Components, Props>({
     data() {
       return {
         gamePassABIJson: null,
-        gamePassContractAddress: '0xfa0a32DC5b43395752bEC3a955E16874E8a1e293',
+        gamePassContractAddress: '0x8b0FD871B60Def160dDcecc9864dBe96c2023242',
+        dogAiArtAddress: '0xE693b5107B4Bf5222d72852f080a2cd54035E4C3',
         gamePassContract: null,
         totalNftSupply: null,
         web3: null,
@@ -64,18 +67,16 @@ export default Vue.extend<Data, Methods, Components, Props>({
       }
     },
     computed: {
-      ...mapGetters('seaDrop', ['gamePassABI']),
-      ...mapGetters(['userWallet']),
+      ...mapGetters('seaDrop', ['generativeAbi']),
     },
     mounted() {
       if (process.browser) {
-          this.web3 = new Web3(window.ethereum)
-          this.gamePassABIJson = JSON.parse(this.gamePassABI)
-          this.gamePassContract = new this.web3.eth.Contract(this.gamePassABIJson, this.gamePassContractAddress)
-          this.provider = new ethers.providers.Web3Provider(window.ethereum);
+          // this.web3 = new Web3(window.ethereum)
+          // this.gamePassContract = new this.web3.eth.Contract(this.gamePassABIJson, this.gamePassContractAddress)
+          // this.provider = new ethers.providers.Web3Provider(window.ethereum);
 
-          const nftPrice = this.nftPrice()
-          nftPrice.then((price: string) => {this.price = price})
+          // const nftPrice = this.nftPrice()
+          // nftPrice.then((price: string) => {this.price = price})
       }
     },
     methods: {
@@ -106,16 +107,26 @@ export default Vue.extend<Data, Methods, Components, Props>({
       },
       async signNft() {
         if (process.browser) {
-          // define contract
-          const contract = await this.getContract()
-
-          // transaction
-          const tx = await contract.mint(1) // .call()
-          const receipt = await tx.wait()
-          console.log({receipt})
+          // we should definitely use a library for this -.-;
+          await window.ethereum.request({
+            method: 'eth_requestAccounts',
+          });
+          const provider = new ethers.providers.Web3Provider(window.ethereum);
+          const signer = await provider.getSigner()
+          const contract = new ethers.Contract(
+            this.dogAiArtAddress,
+            this.generativeAbi,
+            signer
+          );
+          try {
+          console.log(`attempting to mint ${contract.name}`)
+          const tx = await contract.mint(1)
+          console.log(tx)
+          } catch(err){
+            console.log(err)
+          }
+          }
         }
-        
-      }
     },
 })
 </script>

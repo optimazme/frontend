@@ -31,7 +31,9 @@ import Vue from 'vue'
 import axios from 'axios'
 import { mapGetters } from 'vuex'
 import Web3 from 'web3'
-import { ethers } from 'ethers'
+import { Seaport } from "@opensea/seaport-js";
+import { ethers } from "ethers";
+import { ItemType } from '@opensea/seaport-js/lib/constants';
 declare const window: any
 
 interface Data {
@@ -94,28 +96,47 @@ export default Vue.extend<Data, Methods, Components, Props>({
     })
   },
   methods: {
-    async buyNft(listing: Object) {
-      console.log({ listing })
+    async buyNft(listing: Object | any) {
       if (process.browser && typeof window.ethereum !== "undefined") {
-        const web3 = new Web3(window.ethereum)
-        const accounts = await web3.eth.requestAccounts()
-        const account = accounts[0]
-        console.log({ account })
-        // web3.eth.signTransaction(listing, account)
-        web3.eth.sign(listing.toString(), account)
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
 
-      // const provider = new ethers.providers.Web3Provider(window.ethereum)
-      // const signer = provider.getSigner()
-      // const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, signer)
-      // try {
-      //   const transactionResponse = await contract.fund({
-      //     value: ethers.utils.parseEther(ethAmount),
-      //   })
-      //   await listenForTransactionMine(transactionResponse, provider)
-      // } catch (error) {
-      //   contractState.innerHTML = `There was an error: ${error}`
-      //   console.log(error)
-      // }
+        // const wallet = await window.ethereum.request({
+        //                   method: 'eth_requestAccounts',
+        //                 });
+        const seaport = new Seaport(provider);
+
+        const fulfiller = window.ethereum
+        const  offerer = listing.protocol_data.offerer;
+        const { executeAllActions } = await seaport.createOrder(
+          {
+            offer: [
+              {
+                itemType: ItemType.ERC721,
+                token: listing.protocol_data.parameters.offer[0].token,
+                identifier: "1",
+              },
+            ],
+            consideration: [
+              {
+                amount: ethers.utils.parseEther("0.005").toString(),
+                recipient: offerer,
+              },
+            ],
+          },
+          offerer
+        );
+
+        const order = await executeAllActions();
+
+        const { executeAllActions: executeAllFulfillActions } =
+          await seaport.fulfillOrder({
+            order,
+            accountAddress: fulfiller,
+          });
+
+        const transaction = executeAllFulfillActions();
+        console.log({transaction})
+
     } else {
       console.log('install metamask')
       // fundButton.innerHTML = "Please install MetaMask"
