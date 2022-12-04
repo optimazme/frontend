@@ -1,15 +1,18 @@
 <template>
   <div>
-    <div v-if="!hasMetamask" class="bg-red-500 text-white w-full h-20 mt-10 rounded-md text-2xl">
+    <button  v-if="!hasMetamask" class="bg-red-500 text-white w-full h-20 mt-10 rounded-md text-2xl">
       <a target="_" href="https://metamask.io/">
-        <span>Download</span> Metamask to connect wallet.
+        Download Metamask to Play
       </a>
-    </div>
-    <div v-else class="bg-red-500 text-white w-full h-20 mt-10 rounded-md text-2xl" @click="connectMetamask">
-      <button>
-        Connect Wallet!
-      </button>
-    </div>
+    </button>
+    <button v-else @click="connectMetamask" class="bg-red-500 text-white w-full h-20 mt-10 rounded-md text-2xl">
+      Connect Wallet!
+    </button>
+    <!-- <button v-else class="bg-red-500 text-white w-full h-20 mt-10 rounded-md text-2xl">
+      <NuxtLink to="/play">
+        Play!
+      </NuxtLink>
+    </button> -->
   </div>
 </template>
 <script lang="ts">
@@ -30,6 +33,7 @@ interface Components {
 export default Vue.extend<Data, Methods, Components>({
   data() {
     return {
+      // hasMetamask: false
     }
   },
   computed: {
@@ -37,7 +41,6 @@ export default Vue.extend<Data, Methods, Components>({
       return process.browser ? typeof window.ethereum !== 'undefined' : false
     },
      windowMeta (): string | any {
-      
       return process.browser ? Object.keys(window) : []
     }
   },
