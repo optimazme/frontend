@@ -22,8 +22,17 @@ let AppController = class AppController {
     getHello() {
         return this.appService.getHello();
     }
-    async updateToken(body) {
-        return this.appService.updateTokenMetadata(body);
+    async getAiArtMetadata() {
+        return this.appService.getAiPassMetadata();
+    }
+    getTransactionByHash(walletAddress) {
+        return this.appService.checkForGamePassOwner(walletAddress);
+    }
+    async updateGameTokenMetadata(body) {
+        return this.appService.updateGameTokenMetadata(body.tokenId, body.prompt);
+    }
+    async updateAiTokenMetadata(body) {
+        return this.appService.updateAiTokenMetadata(body.tokenId, body.prompt);
     }
     async getAiImage(body) {
         return this.appService.getAiImage(body.prompt);
@@ -36,12 +45,32 @@ __decorate([
     __metadata("design:returntype", String)
 ], AppController.prototype, "getHello", null);
 __decorate([
-    (0, common_1.Post)("updateToken"),
+    (0, common_1.Get)("getAiArtMetadata"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], AppController.prototype, "getAiArtMetadata", null);
+__decorate([
+    (0, common_1.Get)("getNftUrl/:walletAddress"),
+    __param(0, (0, common_1.Param)("walletAddress")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "getTransactionByHash", null);
+__decorate([
+    (0, common_1.Post)("updateGameTokenMetadata"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
-], AppController.prototype, "updateToken", null);
+], AppController.prototype, "updateGameTokenMetadata", null);
+__decorate([
+    (0, common_1.Post)("updateAiTokenMetadata"),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AppController.prototype, "updateAiTokenMetadata", null);
 __decorate([
     (0, common_1.Post)("getAiImage"),
     __param(0, (0, common_1.Body)()),

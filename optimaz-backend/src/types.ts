@@ -27,6 +27,7 @@ export type Metadata = {
   }
 
   export type Prompt = {
+      tokenId: string,
       prompt: string
   }
 
