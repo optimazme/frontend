@@ -14,3 +14,5 @@ However, we faced serious technical difficulties that are externally caused as b
    
 In addition, we would like to design the contract in a way as such that pass purchasers are gathered in an array for each month for the lottery to run. And at the end of each month, we either manually or atuomatically call a delete an array function to delete, start anew for the following month.
 Since we did not finish writing this part of the code, this is to be worked on post hackathon submission.
+
+Tests will also be written when the contracts are fully available and ready for testing.
