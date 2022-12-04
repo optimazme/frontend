@@ -8,7 +8,7 @@
         <img :src="pfpSource" alt="pfp image for game" class="w-1/2 h-1/2"/>
       </div>
       <div class="">
-        <CountDown :game-duration-in-minutes="5"/>
+        <CountDown :game-duration-in-minutes="gameDurationInMinutes"/>
         {{foundImagesLength}} / {{showImagesLength}}
       </div>
       
@@ -44,13 +44,19 @@ interface Components {
 }
 
 interface Props {
-
+  gameDurationInMinutes: number
 }
 
 
 export default Vue.extend<Data, Methods, Components, Props>({
   components: {
     CountDown: () => import('@/components/mazes/CountDown.vue')
+  },
+  props: {
+    gameDurationInMinutes: {
+      type: Number,
+      default: 5
+    }
   },
   computed: {
     ...mapGetters('maze', ['foundImages', 'foundImagesLength', 'foundPhrases','pfpSource', 'showImagesLength']),

@@ -47,7 +47,7 @@ interface Components {
 }
 
 interface Props {
-
+  gameDurationInMinutes: number
 }
 
 export default Vue.extend<Data, Methods, Components, Props>({
@@ -55,6 +55,12 @@ export default Vue.extend<Data, Methods, Components, Props>({
     AFrameWrapper: () => import('@/components/mazes/AFrameWrapper.vue'),
     EndScreen: () => import('@/components/mazes/EndScreen.vue'),
     SideBar: () => import('@/components/mazes/SideBar.vue')
+  },
+  props: {
+    gameDurationInMinutes: {
+      type: Number,
+      default: 5
+    }
   },
   layout: 'vr',
   data() {
