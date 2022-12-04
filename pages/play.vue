@@ -1,96 +1,80 @@
 <template>
   <div>
-    <div>
-      <ConnectWallet v-if="!userWallet"/>
-    </div>
     <!-- <button @click="startGame('dogs-for-better-lives')">Dogs for Better Lives Maze</button> -->
+    <!--  -->
     <div v-for="(maze, index) in mazes" :key="`maze-${index}`">
-      <button @click="startGame(maze)">
-        <NuxtImg :src="maze.img" :alt="`${maze.name} Game Pass`" />
-      </button>
+       
+      <MintNft
+        :contract-address="maze.gamePassContractAddress"
+        :contract-abi="maze.contractAbi"
+        :price="maze.price"
+        :currency="maze.currency"
+        :has-places-to-be="true"
+        :going-to="`/maze/${maze.slug}`"
+        :maze-info="maze.mazeInfo"
+        :should-setup-game="true"
+      >
+        <template #mintImage><NuxtImg :src="maze.img" :alt="`${maze.name} Game Pass`" /></template>
+      </MintNft>
     </div>
-    <MoreOpensea />
   </div>
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import { mapGetters } from 'vuex'
-import axios from 'axios'
+
+import dogsForBetterLivesInfo from '@/utils/mazes/dogsForBetterLivesMaze'
 declare const window: any
 
 interface Data {
-
+  dbfl: any
+  mazes?: any
 }
 
 interface Methods {
   setShowImages: any
-  startGame: any
+  
+ 
 }
 
 interface Components {
-  ConnectWallet?: Object
-  MoreOpensea?: Object
-  isWalletConnected?: Boolean
+  MintNft?: any
+  
 }
 
 interface Props {
 
 }
 
-interface Computed {
-  isWalletConnected?: boolean
-}
-
 export default Vue.extend<Data, Methods, Components, Props>({
   components: {
-    ConnectWallet: () => import('@/components/ConnectWallet.vue'),
-    MoreOpensea: () => import('@/components/mazes/MoreOpensea.vue')
+    MintNft: () => import("@/components/MintNft.vue")
   },
   data() {
     return {
-      mazes: [
-        {
-          name: 'Dogs For Better Lives',
-          slug: 'dogs-for-better-lives',
-          img: '/mazes/mysterious_dogs_for_better_lives.png',
-          openSeaCollection: 'dfbl-ai',
-          niftyKitApi: process.env.NIFTY_DOG_AI_API_KEY
-        }
-      ],
-      results: []
+      dbfl: dogsForBetterLivesInfo,
+      results: [],
+      mazes: [],
     }
   },
   computed: {
-    ...mapGetters(['userWallet']),
-    isWalletConnected() {
-      return process.browser ? typeof window.ethereum !== 'undefined' : false
-    }
+    
   },
-  methods: {
-    setShowImages(images: string[]) {
-      const randomized = images.sort(() => (Math.random() > .5) ? 1 : -1)
-      return randomized.slice(0, 20)
-    },
-    startGame(maze: object | any) {
-      const url = 'https://api.niftykit.com/drops/tokens'
-      const config = {
-        headers: {
-          'x-api-key': maze.niftyKitApi
-        } 
-      }
-      axios.get(url, config).then((response: any) => {
-        const result = response.data.data
-        const images = result.map((x: any) => { return x.data.image })
-        this.setShowImages(images)
-        this.$store.dispatch('maze/setMazeImages', this.setShowImages(images)).then(() => {
-          this.$store.dispatch('maze/setPfpSource', 'https://www.optimaz.me/mazes/default_dog_pfp.png').then(() => {
-            const slug = `/maze/${maze.slug}`
-            this.$router.push(slug)
-          })
-        })     
-      })
-      
-    }
-  }
+  mounted() {
+    this.mazes = [
+        {
+          name: this.dbfl.data.mazeName,
+          slug: this.dbfl.data.slug,
+          img: this.dbfl.data.buyImg,
+          openSeaCollection: 'dfbl-ai',
+          price: parseInt(this.dbfl.data.gamePassPrice) / 10e18,
+          currency: this.dbfl.data.currency,
+          niftyKitApi: process.env.NIFTY_DOG_AI_API_KEY,
+          gamePassContractAddress: this.dbfl.data.gamePassContractAddress,
+          aiContractAddress: this.dbfl.data.aiContractAddress,
+          contractAbi: this.dbfl.data.contractAbi,
+          mazeInfo: this.dbfl.data
+        }
+      ]
+  },
 })
 </script>
