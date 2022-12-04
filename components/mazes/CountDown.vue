@@ -58,7 +58,6 @@ export default Vue.extend<Data, Methods, Components, Props, Computed>({
         this.secondsLeft = Math.floor((difference % (1000 * 60)) / 1000);
         this.$store.dispatch('maze/minutesLeft', this.minutesLeft)
         if (this.minutesLeft <= 0 && this.secondsLeft <= 0) {
-          console.log('should end?????')
           this.$store.dispatch('maze/endGame')
           clearInterval(countDown) 
         }

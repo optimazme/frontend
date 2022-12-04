@@ -5,14 +5,15 @@ export const state = () => ({
   foundImages: [],
   foundPhrases: [],
   gameEndTime: null,
+  gamePassNonce: '',
   hasGameEnded: false,
   hasGameStarted: false,
   mazeImages: [],
   minutesLeft: 0,
-  pfpSource: 'https://www.optimaz.me/mazes/demo_floor.png',
+  pfpSource: 'http://localhost:3000/mazes/demo_floor.png',
   prompt: [],
   mazeInfo: {},
-  mazeObj: 'https://www.optimaz.me/mazes/demo.glb',
+  mazeObj: 'http://localhost:3000/mazes/demo.glb',
   showImages: [],
   showNavigation: false,
   subject: ''
@@ -26,6 +27,7 @@ export const getters = {
   foundImagesLength: state => state.foundImages.length,
   foundPhrases: state => state.foundPhrases,
   gameEndTime: state => state.gameEndTime,
+  gamePassNonce: state => state.gamePassNonce,
   hasGameEnded: state => state.hasGameEnded,
   hasGameStarted: state => state.hasGameStarted,
   mazeImages: state => state.mazeImages,
@@ -69,6 +71,9 @@ export const actions = {
   },
   setFoundPhrases({ commit }, phrases) {
     commit('SET_FOUND_PHRASES', phrases)
+  },
+  setGamePassNonce({ commit }, nonce) {
+    commit('SET_GAME_PASS_NONCE', nonce)
   },
   setMazeImages({commit}, images) {
     commit('SET_MAZE_IMAGES', images)
@@ -126,6 +131,9 @@ export const mutations = {
     phrases.unshift(state.subject)
     
     state.foundPhrases = phrases
+  },
+  SET_GAME_PASS_NONCE(state, nonce) {
+    state.gamePassNonce = nonce
   },
   SET_HAS_GAME_STARTED(state, bool) {
     state.hasGameStarted = bool

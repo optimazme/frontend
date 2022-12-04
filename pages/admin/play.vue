@@ -9,15 +9,9 @@ import axios from 'axios'
 import MazeInfo from '@/utils/mazes/dogsForBetterLivesMaze'
 
 export default Vue.extend({
-  data() {
-    return {
-      maze: {}
-    }
-  },
   methods: {
     setGame() {
       const maze = MazeInfo.data
-      this.maze = maze
       const url = 'https://api.niftykit.com/drops/tokens'
       const config = {
         headers: {

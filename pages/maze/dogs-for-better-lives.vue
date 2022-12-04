@@ -57,7 +57,7 @@ interface Components {
 }
 
 interface Props {
-
+  gameDurationInMinutes: number
 }
 
 export default Vue.extend<Data, Methods, Components, Props>({
@@ -67,6 +67,12 @@ export default Vue.extend<Data, Methods, Components, Props>({
     SideBar: () => import('@/components/mazes/SideBar.vue')
   },
   layout: 'vr',
+  props: {
+    gameDurationInMinutes: {
+      type: Number,
+      default: 5
+    }
+  },
   data() {
     return {
       windowWidth: 500,
