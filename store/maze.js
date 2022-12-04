@@ -6,10 +6,13 @@ export const state = () => ({
   foundPhrases: [],
   gameEndTime: null,
   hasGameEnded: false,
+  hasGameStarted: false,
   mazeImages: [],
   minutesLeft: 0,
-  pfpSource: 'https://www.optimaz.me/maze/demo_floor.png',
+  pfpSource: 'https://www.optimaz.me/mazes/demo_floor.png',
   prompt: [],
+  mazeInfo: {},
+  mazeObj: 'https://www.optimaz.me/mazes/demo.glb',
   showImages: [],
   showNavigation: false,
   subject: ''
@@ -24,7 +27,10 @@ export const getters = {
   foundPhrases: state => state.foundPhrases,
   gameEndTime: state => state.gameEndTime,
   hasGameEnded: state => state.hasGameEnded,
+  hasGameStarted: state => state.hasGameStarted,
   mazeImages: state => state.mazeImages,
+  mazeInfo: state => state.mazeInfo,
+  mazeObj: state => state.mazeObj,
   minutesLeft: state => state.minutesLeft,
   pfpSource: state => state.pfpSource,
   prompt: state => state.prompt,
@@ -55,6 +61,9 @@ export const actions = {
   setCameraZ({ commit }, zPosition) {
     commit('SET_Z_POSITION', zPosition)
   },
+  setHasGameStarted({commit}, bool) {
+    commit('SET_HAS_GAME_STARTED', bool)
+  },
   setFoundImage({ commit }, imageInfo) {
     commit('SET_FOUND_IMAGE', imageInfo)
   },
@@ -70,6 +79,12 @@ export const actions = {
   setPrompt({ commit }, prompt) {
     commit('SET_PROMPT', prompt)
   },
+  setMazeInfo({ commit }, mazeInfo) {
+    commit('SET_MAZE_INFO', mazeInfo)
+  },
+  setMazeObj({ commit}, mazeObj) {
+    commit('SET_MAZE_OBJ', mazeObj)
+  },
   setShowImages({ commit }, images) {
     commit('SET_SHOW_IMAGES', images)
   },
@@ -81,6 +96,7 @@ export const actions = {
   },
   startGame({ commit }) {
     commit('START_GAME')
+    commit('SET_HAS_GAME_STARTED', true)
   },
 }
 
@@ -111,8 +127,17 @@ export const mutations = {
     
     state.foundPhrases = phrases
   },
+  SET_HAS_GAME_STARTED(state, bool) {
+    state.hasGameStarted = bool
+  },
   SET_MAZE_IMAGES(state, images) {
     state.mazeImages = images
+  },
+  SET_MAZE_INFO(state, mazeInfo) {
+    state.mazeInfo = mazeInfo
+  },
+  SET_MAZE_OBJ(state, mazeObj) {
+    state.mazeObj = mazeObj
   },
   SET_PFP_SOURCE(state, src) {
     state.pfpSource = src

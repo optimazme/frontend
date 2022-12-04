@@ -81,6 +81,8 @@ export default {
   css: [
   ],
   env: {
+    BASE_URL: process.env.BASE_URL,
+    BASE_BACKEND_URL: process.env.BASE_BACKEND_URL,
     BLOCK_EXPLORER_URL: process.env.BLOCK_EXPLORER_URL,
     CHAIN_ID: process.env.CHAIN_ID,
     CHAIN_NAME: process.env.CHAIN_NAME,

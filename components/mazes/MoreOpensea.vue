@@ -1,19 +1,19 @@
 <template>
   <div>
-    <h2>More from Optimaz</h2>
+    <h2 class="text-4xl w-full text-center p-5 my-5 bg-green-800 text-white">More from Optimaz</h2>
+    
     <div class="grid grid-cols-3">
       <div v-for="(asset, index) in assets" :key="`asset-${index}`">
-      <img :src="asset.image_url" :alt="asset.name" />
-      <div v-if="listings.length > 0"> 
-        <div>{{formatPrice(listings[index].current_price)}} ETH</div>
-        <button @click="buyNft(listings[index].current_price)">Buy Now</button>
+        <img :src="asset.image_url" :alt="asset.name" class="w-3/4 h-3/4 mx-auto mb-2"/>
+        <div class="w-full text-center">
+          <div  v-if="listings.length > 0"> 
+            <div class="my-5">{{formatPrice(listings[index].current_price)}} ETH</div>
+          </div>
+          <a :href="asset.permalink" target="_" class="bg-blue-700 text-white text-2xl text-center p-3 rounded-md my-10">Buy on OpenSea</a>
+        </div>
+        
       </div>
-     
     </div>
-    </div>
-    <pre v-for="(asset, index) in assets" :key="`asset-info-${index}`">
-      {{listings}}
-    </pre>
   </div>
 </template>
 <script lang="ts">
@@ -97,7 +97,7 @@ export default Vue.extend<Data, Methods, Components, Props>({
     },
     formatPrice(currentPrice: string): number {
       const price = parseInt(currentPrice)
-      return price / 10e18
+      return price / 10e17
     }
   }
 })
