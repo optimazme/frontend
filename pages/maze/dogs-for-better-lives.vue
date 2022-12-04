@@ -66,13 +66,13 @@ export default Vue.extend<Data, Methods, Components, Props>({
     EndScreen: () => import('@/components/mazes/EndScreen.vue'),
     SideBar: () => import('@/components/mazes/SideBar.vue')
   },
+  layout: 'vr',
   props: {
     gameDurationInMinutes: {
       type: Number,
       default: 5
     }
   },
-  layout: 'vr',
   data() {
     return {
       windowWidth: 500,

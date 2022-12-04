@@ -1,5 +1,6 @@
 export default {
   "data": {
+    freeMintContractAddress: '0xE693b5107B4Bf5222d72852f080a2cd54035E4C3',
     gamePassContractAddress: '0xfa0a32DC5b43395752bEC3a955E16874E8a1e293',
     gamePassPrice: '50000000000000000',
     gamePassNiftyKitApi: '',
@@ -14,10 +15,10 @@ export default {
     aiCollection: '',
     mazeName: 'Dogs for Better Lives Maze',
     revealGamePassImage: 'mysterious_dogs_for_better_lives.png',
-    localAssets: [
+    assets: [
       {
         name: 'maze',
-        obj: 'http://localhost:3000/mazes/demo.glb',
+        obj: 'http://localhost:3000/mazes/dog_maze.glb',
         display: {
           "scale": "0.94 .5 0.94",
           "position": "0 0 0",
@@ -25,10 +26,10 @@ export default {
         }
       },
     ],
-    assets: [
+    remoteAssets: [
       {
         name: 'maze',
-        obj: 'https://www.optimaz.me/mazes/demo.glb',
+        obj: 'https://www.optimaz.me/mazes/dog_maze.glb',
         display: {
           "scale": "0.94 .5 0.94",
           "position": "0 0 0",
@@ -120,7 +121,7 @@ export default {
       'Heeler',
       'mutt'
     ],
-    locations: [
+    demoLocations: [
       { position: '0 2 -5', scale: '2 2 2', rotation: '0 0 0' },
       { position: '5 2 -5', scale: '2 2 2', rotation: '0 0 0' },
       { position: '-5 2 -5', scale: '2 2 2', rotation: '0 0 0' },
@@ -134,7 +135,7 @@ export default {
       { position: '5 2 -20', scale: '2 2 2', rotation: '0 0 0' },
       { position: '-5 2 -20', scale: '2 2 2', rotation: '0 0 0' },
     ],
-    rgLocations: [
+    locations: [
       
       { position: '-100 2 -95', scale: '2 2 2', rotation: '0 0 0' },  
 

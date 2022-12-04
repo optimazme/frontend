@@ -135,8 +135,6 @@ export default Vue.extend<Data, Methods, Components, Props>({
 
     },
     isUnfound(image: any) {
-      // console.log(this.$store.getters['maze/foundImages'])
-      // return true
       const foundImages = this.$store.getters['maze/foundImages'].map((image:any) => image.src)
       return !foundImages.includes(image.src)
     },

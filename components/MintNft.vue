@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div @click="mintNft">
     <slot name="mintImage" @click="mintNft">
 
     </slot>
     <slot name="mintButton">
-      <button @click="mintNft">{{price}} {{currency}} Mint Now</button>
+      <button>{{price}} {{currency}} Mint Now</button>
     </slot>
     <div v-if="error">{{error}}</div>
   </div>
@@ -13,7 +13,7 @@
 import Vue from 'vue'
 import { ethers } from 'ethers'
 import axios from 'axios'
-import backupMazeInfo from '@/utils/mazes/dogsForBetterLivesMaze'
+// import backupMazeInfo from '@/utils/mazes/dogsForBetterLivesMaze'
 
 declare const window: any
 
@@ -39,7 +39,7 @@ interface Props {
   currency: string | any
   hasPlacesToBe: boolean
   goingTo: string
-  mazeInfo: Object
+  mazeInfo: any
   shouldSetupGame: boolean
 }
 
@@ -94,13 +94,14 @@ export default Vue.extend<Data, Methods, Components, Props>({
         this.setMazeInfo()
         this.setGame()
       }
-      
+      let userWallet
       // we should definitely use a library for this -.-;
-      await window.ethereum.request({
-        method: 'eth_requestAccounts',
-      });
-
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      try {
+        userWallet = await window.ethereum.request({
+          method: 'eth_requestAccounts',
+        });
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+      this.$store.dispatch('setUserWallet', userWallet[0])
       const signer = await provider.getSigner()
       
       const contract = new ethers.Contract(
@@ -108,11 +109,13 @@ export default Vue.extend<Data, Methods, Components, Props>({
         this.contractAbi,
         signer
       );
-      console.log({provider, signer, contract})
+      
+      const mintValue = ethers.utils.parseEther('0.005')
       try {
         console.log(`attempting to mint ${contract.name}`)
-        const tx = await contract.mint(1)
+        const tx = await contract.mint(1, {value: mintValue})
         console.log(tx)
+        this.$store.dispatch('maze/setGamePassNonce', tx.nonce)
         if(this.hasPlacesToBe) {
           this.$router.push(this.goingTo)
         }
@@ -123,33 +126,41 @@ export default Vue.extend<Data, Methods, Components, Props>({
             this.$router.push(this.goingTo)
           }
         }
+      } catch (err) {
+        this.error = err
+      }
       },
     setGame() {
-      const maze: any = Object.keys(this.mazeInfo).length > 0 ? this.mazeInfo : backupMazeInfo.data
+      
       const url = 'https://api.niftykit.com/drops/tokens'
       const config = {
         headers: {
-          'x-api-key': maze.aiNiftyKitApi
+          'x-api-key': this.mazeInfo.aiNiftyKitApi
         } 
       }
-
-      const locations = maze.locations.sort(() => (Math.random() > .5) ? 1 : -1)
-      // const images = this.mazeImages.sort(() => (Math.random() > .5) ? 1 : -1)
-      const subject = maze.subjects.sort(() => (Math.random() > .5) ? 1 : -1)
-      const prompt = maze.prompts.sort(() => (Math.random() > .5) ? 1 : -1)
-      const chosenPrompt = prompt[0].sort(() => (Math.random() > .5) ? 1 : -1)
+      
+      
+      let locations = [...new Set(this.mazeInfo.locations)]
+      locations = locations.sort(() => (Math.random() > .5) ? 1 : -1)
+      let subject = [...new Set(this.mazeInfo.subjects)]
+      subject = subject.sort(() => (Math.random() > .5) ? 1 : -1)
+      let prompt: string[][] = [...new Set(this.mazeInfo.prompts)]
+      prompt = prompt.sort(() => (Math.random() > .5) ? 1 : -1)
+      const firstPrompt: string[] = prompt[0]
+      const chosenPrompt = [...new Set(firstPrompt)].sort(() => (Math.random() > .5) ? 1 : -1)
+      
       axios.get(url, config).then((response) => {
         const result = response.data.data
         const images = result.map((x: any) => { return x.data.image })
         const showImages = this.setShowImages(images)
-        const shownImages = showImages.map((image: string, index: number) => {
+        const resultImages = showImages.map((image: string, index: number) => {
           return {
             src: image.replace('nftstorage.link','ipfs.io'),
             displayInfo: locations[index],
             word: chosenPrompt[index]
           }
         })
-        this.$store.dispatch('maze/setShowImages', shownImages)
+        this.$store.dispatch('maze/setShowImages', resultImages)
         this.$store.dispatch('maze/setSubject', subject[0])
         this.$store.dispatch('maze/startGame')
       })
