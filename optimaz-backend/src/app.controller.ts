@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Token, Prompt } from './types';
 
@@ -11,13 +11,29 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Post("updateToken")
-  async updateToken(@Body() body: Token) {
-    return this.appService.updateTokenMetadata(body)
+  @Get("getAiArtMetadata")
+  async getAiArtMetadata() {
+    return this.appService.getAiPassMetadata()
+  }
+
+  @Get("getNftUrl/:walletAddress")
+  getTransactionByHash(@Param("walletAddress") walletAddress: string) {
+    return this.appService.checkForGamePassOwner(walletAddress)
+  }
+
+  @Post("updateGameTokenMetadata")
+  async updateGameTokenMetadata(@Body() body: Prompt) {
+    return this.appService.updateGameTokenMetadata(body.tokenId, body.prompt)
+  }
+
+  @Post("updateAiTokenMetadata")
+  async updateAiTokenMetadata(@Body() body: Prompt) {
+    return this.appService.updateAiTokenMetadata(body.tokenId, body.prompt)
   }
 
   @Post("getAiImage")
   async getAiImage(@Body() body: Prompt) {
     return this.appService.getAiImage(body.prompt)
   }
+
 }
