@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div v-if="!hasMetamask" class="text-white text-center bg-brown">
+    <div v-if="!hasMetamask" class="bg-red-500 text-white w-full h-20 mt-10 rounded-md text-2xl">
       <a target="_" href="https://metamask.io/">
         <span>Download</span> Metamask to connect wallet.
       </a>
     </div>
-    <div v-else class="text-white text-center bg-brown" @click="connectMetamask">
+    <div v-else class="bg-red-500 text-white w-full h-20 mt-10 rounded-md text-2xl" @click="connectMetamask">
       <button>
         Connect Wallet!
       </button>

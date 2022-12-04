@@ -9,7 +9,6 @@
         <NuxtImg :src="maze.img" :alt="`${maze.name} Game Pass`" />
       </button>
     </div>
-    <MoreOpensea />
   </div>
 </template>
 <script lang="ts">
