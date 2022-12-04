@@ -32,7 +32,25 @@ import { mapGetters } from 'vuex'
 import axios from 'axios'
 declare const window: any
 
-export default Vue.extend({
+interface Data {
+  pfpSource: string
+}
+
+interface Methods {
+  getPfp: any
+}
+
+interface Components {
+  formattedPhrases?: any
+  foundPhrases?: any
+  userWallet?: string | any
+}
+
+interface Props {
+
+}
+
+export default Vue.extend<Data, Methods, Components, Props>({
   components: {
     MoreOpenSea: () => import("@/components/mazes/MoreOpensea.vue"),
     AiMintNft: () => import("@/components/AiMintNft.vue")
@@ -52,14 +70,14 @@ export default Vue.extend({
   mounted() {
     if (process.browser) {
         if(!this.userWallet || this.userWallet === undefined) {
-          const userWallet = window.ethereum.request({
-          method: 'eth_requestAccounts',
-        }).then((wallet: string[]) => {
-          this.getPfp(wallet[0])
-        })
-      } else {
-          this.getPfp(this.userWallet)
-      }
+          window.ethereum.request({
+            method: 'eth_requestAccounts',
+          }).then((wallet: string[]) => {
+            this.getPfp(wallet[0])
+          })
+        } else {
+            this.getPfp(this.userWallet)
+        }
     }
     
   },

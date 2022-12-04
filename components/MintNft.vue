@@ -144,7 +144,7 @@ export default Vue.extend<Data, Methods, Components, Props>({
       locations = locations.sort(() => (Math.random() > .5) ? 1 : -1)
       let subject = [...new Set(this.mazeInfo.subjects)]
       subject = subject.sort(() => (Math.random() > .5) ? 1 : -1)
-      let prompt: string[][] = [...new Set(this.mazeInfo.prompts)]
+      let prompt: any = [...new Set(this.mazeInfo.prompts)]
       prompt = prompt.sort(() => (Math.random() > .5) ? 1 : -1)
       const firstPrompt: string[] = prompt[0]
       const chosenPrompt = [...new Set(firstPrompt)].sort(() => (Math.random() > .5) ? 1 : -1)

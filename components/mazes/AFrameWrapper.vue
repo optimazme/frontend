@@ -6,16 +6,9 @@
     cursor="rayOrigin: mouse; fuse: false"
     raycaster="objects: .raycastable" embedded
   >
-  <!-- <a-scene
-      id="maze"
-      cursor="rayOrigin: mouse; fuse: false"
-      :style="`height: ${canvasHeight}px; width: ${canvasWidth}px`"
-      raycaster="objects: .raycastable"
-      embedded
-    > -->
     <!-- ASSETS -->
       <a-assets>
-        <img id="floor" :src="pfpSource">
+        <img id="floor" :src="mazeFloor">
         <a-asset-item id="maze-glb" :src="mazeObj"></a-asset-item>
         <a-entity v-for="(image, index) in showImages" :key="`image-${index}}`">
           <a-asset-item :id="`vr-image-${index}`" :src="image.src"></a-asset-item>
@@ -110,7 +103,7 @@ export default Vue.extend<Data, Methods, Components, Props>({
   },
   computed: {
     ...mapGetters(['baseUrl']),
-    ...mapGetters('maze', ['cameraXPosition', 'cameraYPosition', 'cameraZPosition', 'foundImages', 'foundImagesLength', 'pfpSource', 'showImages', 'showImagesLength']),
+    ...mapGetters('maze', ['cameraXPosition', 'cameraYPosition', 'cameraZPosition', 'foundImages', 'foundImagesLength', 'mazeFloor', 'pfpSource', 'showImages', 'showImagesLength']),
     cameraPositionValue() {
       // return `${this.cameraXPosition} ${this.cameraYPosition} ${this.cameraZPosition}`
       return "0 0 0"
