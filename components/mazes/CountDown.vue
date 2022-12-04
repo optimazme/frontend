@@ -1,7 +1,17 @@
 <template>
-  <div class="flex flex-row px-5 text-center">
-    <div class="mx-auto">{{ minutesLeft }} minutes</div>
-    <div class="mx-auto">{{ secondsLeft }} seconds</div>
+  <div class="flex flex-col  px-5 text-center font m-4 mb-0">
+    <div class="countdown-card">
+      <div class="mx-auto">
+        <span class="text-red-400">
+          {{ minutesLeft }}
+        </span> Minutes and
+      </div>
+      <div class="mx-auto">
+        <span class="text-red-400">
+          {{ secondsLeft }}
+        </span> Seconds left ⏰
+      </div>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -75,3 +85,21 @@ export default Vue.extend<Data, Methods, Components, Props, Computed>({
 })
 
 </script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+  .logo {
+    font-family: 'Poppins', sans-serif;
+  }
+  .font{
+    font-family: 'Roboto', sans-serif;
+  }
+  .countdown-card {
+    border-radius: 1rem;
+    background: rgba(0,0,0,0.33);
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(0px);
+  }
+</style>

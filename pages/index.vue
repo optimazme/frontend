@@ -29,13 +29,12 @@
               <div class="card">
                 <p class="text-5xl text-white">Know already <br>Play your way</p>
                 <div>
-                  <ConnectWallet />
+                  <ConnectWallet class="bg-red-500 text-white w-full h-20 mt-10 rounded-md text-2xl"/>
                 </div>
               </div>
             </div>
           </div>
           <div class="text-white text-3xl w-full font flex justify-center items-center overflow-hidden fixed bottom-10">
-
             <div>
               Built with &nbsp;
             </div>
@@ -65,9 +64,9 @@
           </div>
         </div>
       </div>
-      <div class="section">
+      <!-- <div class="section">
           <h3>Section 3</h3>
-      </div>
+      </div> -->
     </full-page>
 
 </template>
@@ -108,30 +107,13 @@ export default Vue.extend<Data, Methods, Components, Props>({
   },
   data() {
     return {
-      countdownEndDate: null,
-      difference: 0,
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
       showMenu: true
     }
   },
   mounted() {
-    this.countdownEndDate = new Date("Dec 4, 2022 00:00:00").getTime();
-    this.setCountdownDate()
+    
   },
   methods: {
-    setCountdownDate() {
-      setInterval(() =>{
-        const now = new Date().getTime();
-        const difference = this.countdownEndDate - now;
-        this.days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        this.hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        this.minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        this.seconds = Math.floor((difference % (1000 * 60)) / 1000);
-      },1000);
-    },
     toggleNavbar() {
       this.showMenu = !this.showMenu;
     }
@@ -178,6 +160,12 @@ export default Vue.extend<Data, Methods, Components, Props>({
 
   .glass{
     background: rgba(0,0,0,0.33);
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(0px);
+  }
+
+  .new-glass{
+    background: rgba(0, 0, 0, 0.85);
     -webkit-backdrop-filter: blur(50px);
     backdrop-filter: blur(0px);
   }
