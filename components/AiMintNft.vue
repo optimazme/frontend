@@ -126,7 +126,7 @@ export default Vue.extend<Data, Methods, Components, Props>({
       const tokenId = (parseInt(nonce) - 1).toString()
       await axios.post(url, {tokenId, prompt})
     },
-    async updateAiTokenMetadata(nonce, image) {
+    async updateAiTokenMetadata(nonce: string, image: string) {
       console.log({ nonce, image })
       const url = 'https://x7ygc50t17.execute-api.us-west-1.amazonaws.com/staging/updateAiTokenMetadata'
       const tokenId = (parseInt(nonce) - 1).toString()
