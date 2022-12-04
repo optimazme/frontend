@@ -9,10 +9,10 @@ export const state = () => ({
   hasGameStarted: false,
   mazeImages: [],
   minutesLeft: 0,
-  pfpSource: 'http://localhost:3000/mazes/demo_floor.png',
+  pfpSource: 'https://www.optimaz.me/mazes/demo_floor.png',
   prompt: [],
   mazeInfo: {},
-  mazeObj: 'http://localhost:3000/mazes/demo.glb',
+  mazeObj: 'https://www.optimaz.me/mazes/demo.glb',
   showImages: [],
   showNavigation: false,
   subject: ''
