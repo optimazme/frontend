@@ -27,8 +27,29 @@
         "setting": "open"
       }
     },
-    "/updateToken": {
-      "name": "/updateToken",
+    "/updateGameTokenMetadata": {
+      "name": "/updateGameTokenMetadata",
+      "lambdaFunction": "frontend69abea28",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/updateAiTokenMetadata": {
+      "name": "/updateAiTokenMetadata",
+      "lambdaFunction": "frontend69abea28",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/getAiArtMetadata": {
+      "name": "/getAiArtMetadata",
+      "lambdaFunction": "frontend69abea28",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/getNftUrl/{walletAddress}": {
+      "name": "/getNftUrl/{walletAddress}",
       "lambdaFunction": "frontend69abea28",
       "permissions": {
         "setting": "open"
