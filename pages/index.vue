@@ -78,16 +78,9 @@ import Vue from 'vue'
 import ConnectWallet from "@/components/ConnectWallet.vue";
 
 interface Data {
-  countdownEndDate: Date|any
-  difference: number
-  days: number
-  hours: number,
-  minutes: number,
-  seconds: number
 }
 
 interface Methods {
-  setCountdownDate: any
   toggleNavbar: any
 }
 
