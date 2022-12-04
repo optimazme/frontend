@@ -84,6 +84,7 @@ interface Components {
   showImagesLength?: number | any
   foundImagesLength?: number | any
   cameraPositionValue?: string | any
+  baseUrl?: any
 }
 
 interface Props {
@@ -104,10 +105,11 @@ export default Vue.extend<Data, Methods, Components, Props>({
   },
   data() {
     return {
-      mazeObj: 'https://www.optimaz.me/mazes/demo.glb'
+      mazeObj: `http://localhost:3000/mazes/demo.glb`
     }
   },
   computed: {
+    ...mapGetters(['baseUrl']),
     ...mapGetters('maze', ['cameraXPosition', 'cameraYPosition', 'cameraZPosition', 'foundImages', 'foundImagesLength', 'pfpSource', 'showImages', 'showImagesLength']),
     cameraPositionValue() {
       // return `${this.cameraXPosition} ${this.cameraYPosition} ${this.cameraZPosition}`

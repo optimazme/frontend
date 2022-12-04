@@ -1,7 +1,13 @@
 <template>
   <div>
-    <div v-if="showGame" :key="`game-${hasGameEnded}`" class="h-screen flex flex-col-reverse sm:flex-row">
-      <AFrameWrapper :canvas-width="windowWidth" :canvas-height="windowHeight" />
+    <div v-if="!hasGameStarted && !mazeObj">
+      Please wait while the game starts!
+    </div>
+    <div v-else-if="hasGameStarted && showGame" :key="`game-${hasGameEnded}`" class="h-screen flex flex-col-reverse sm:flex-row">
+      <AFrameWrapper
+        :canvas-width="windowWidth"
+        :canvas-height="windowHeight"
+      />
       <SideBar />
     </div>
     <div v-else :class="showGame ? '' : 'bg-red'">
@@ -12,8 +18,6 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
-
-import MazeInfo from'@/utils/mazes/dogsForBetterLivesMaze'
 
 Vue.config.ignoredElements = [
   'a-assets',
@@ -27,7 +31,6 @@ Vue.config.ignoredElements = [
 interface Data {
   windowWidth: number
   windowHeight: number
-  shownImages: Object[]
 }
 
 interface Methods {
@@ -37,13 +40,20 @@ interface Methods {
 
 interface Components {
   AFrameWrapper?: any
+  baseUrl?: string | any
   EndScreen?: any
+  gameReady?: any
   SideBar?: any
   hasGameEnded?: boolean | any
   mazeImages?: string[] | any
   showGame?: boolean | any
   showImagesLength?: number | any
   foundImagesLength?: number | any
+  mazeInfo?: any
+  maze?: any
+  mazeObj: any
+  pfpSource?: any
+  shownImages?: any
 }
 
 interface Props {
@@ -61,14 +71,26 @@ export default Vue.extend<Data, Methods, Components, Props>({
     return {
       windowWidth: 500,
       windowHeight: 500,
-      shownImages: []
+      maze: {},
+      shownImages: [],
+      subject: ''
     }
   },
   computed: {
-     ...mapGetters('maze', ['foundImagesLength', 'hasGameEnded', 'mazeImages', 'showImagesLength']),
+    ...mapGetters(['baseUrl']),
+     ...mapGetters('maze', ['foundImagesLength', 'hasGameEnded', 'hasGameStarted', 'mazeImages', 'showImagesLength', 'mazeInfo', 'startGame']),
+     gameReady() {
+      return this.shownImages.length > 0 && this.pfpSource
+     },
      showGame(): boolean {
       return !this.hasGameEnded
-     }
+     },
+     mazeObj() {
+      return Object.keys(this.maze).length > 0 ? `${this.baseUrl}/${this.maze.mazeSlug}` : `${this.baseUrl}/mazes/demo.glb`
+    },
+    pfpSource() {
+      return `${this.baseUrl}/mazes/default_dog_pfp.png`
+    }
   },
   mounted() {
     // making aframe reactive
@@ -77,27 +99,7 @@ export default Vue.extend<Data, Methods, Components, Props>({
     addEventListener('resize', () => {
       this.browserWidth()
       this.browserHeight()
-    });
-
-    
-    const locations = MazeInfo.data.locations.sort(() => (Math.random() > .5) ? 1 : -1)
-    // const images = this.mazeImages.sort(() => (Math.random() > .5) ? 1 : -1)
-    const subject = MazeInfo.data.subjects.sort(() => (Math.random() > .5) ? 1 : -1)
-    const prompt = MazeInfo.data.prompts.sort(() => (Math.random() > .5) ? 1 : -1)
-    const chosenPrompt = prompt[0].sort(() => (Math.random() > .5) ? 1 : -1)
-
-    const shownImages = this.mazeImages.map((image: string, index: number) => {
-      return {
-        src: image.replace('nftstorage.link','ipfs.io'),
-        displayInfo: locations[index],
-        word: chosenPrompt[index]
-      }
-    })
-    this.shownImages = shownImages
-    this.$store.dispatch('maze/setShowImages', shownImages)
-    this.$store.dispatch('maze/setSubject', subject[0])
-    this.$store.dispatch('maze/setPrompt', chosenPrompt)
-    this.$store.dispatch('maze/startGame')
+    });    
   },
   methods: {
     browserWidth(): number|any {
