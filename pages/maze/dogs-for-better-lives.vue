@@ -42,7 +42,6 @@ interface Components {
   AFrameWrapper?: any
   baseUrl?: string | any
   EndScreen?: any
-  gameReady?: any
   SideBar?: any
   hasGameEnded?: boolean | any
   mazeImages?: string[] | any
@@ -85,9 +84,6 @@ export default Vue.extend<Data, Methods, Components, Props>({
   computed: {
     ...mapGetters(['baseUrl']),
      ...mapGetters('maze', ['foundImagesLength', 'hasGameEnded', 'hasGameStarted', 'mazeImages', 'showImagesLength', 'mazeInfo', 'startGame']),
-     gameReady() {
-      return this.shownImages.length > 0 && this.pfpSource
-     },
      showGame(): boolean {
       return !this.hasGameEnded
      },
@@ -95,7 +91,7 @@ export default Vue.extend<Data, Methods, Components, Props>({
       return Object.keys(this.maze).length > 0 ? `${this.baseUrl}/${this.maze.mazeSlug}` : `${this.baseUrl}/mazes/demo.glb`
     },
     pfpSource() {
-      return `${this.baseUrl}/mazes/default_dog_pfp.png`
+      return `${this.baseUrl}/mazes/dog_floor.png`
     }
   },
   mounted() {
@@ -111,7 +107,7 @@ export default Vue.extend<Data, Methods, Components, Props>({
     browserWidth(): number|any {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       if (process.browser) {
-        this.windowWidth = window.innerWidth < 600 ? window.innerWidth : window.innerWidth * 0.9
+        this.windowWidth = window.innerWidth < 600 ? window.innerWidth : window.innerWidth * 0.85
       } else {
         this.windowWidth =  500
       }
