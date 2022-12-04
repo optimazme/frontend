@@ -1,150 +1,135 @@
 <template>
-    <div class="home w-screen h-screen bg-landing bg-center bg-cover before:bg-gray-800 before:blur-sm">
-    <nav class="relative flex flex-wrap items-center justify-between px-2 py-3 mb-3">
-        <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
-          <div class="w-full relative flex justify-between lg:w-auto  px-4 lg:static lg:block lg:justify-start">
-            <a class="logo text-3xl font-bold leading-relaxed inline-block mr-4 py-5 whitespace-nowrap uppercase text-white" href="#pablo">
-              Optimaz.me
-            </a>
-          </div>
-          <div v-bind:class="{'hidden': !showMenu, 'flex': showMenu}" class="lg:flex lg:flex-grow items-center">
-            <ul class="flex flex-col lg:flex-row list-none ml-auto">
-              <li class="nav-item">
-                <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75" href="https://twitter.com/optimazme">
-                  <i class="fab fa-twitter text-lg leading-lg text-white opacity-75" />
-                  <span class="ml-2">
-                    <svg class="w-6 h-6 text-white hover:text-gray-800"
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                      aria-hidden="true"
-                      role="img"
-                      width="32"
-                      height="32"
-                      preserveAspectRatio="xMidYMid meet"
-                      viewBox="0 0 24 24"
-                    ><path d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23z" fill="currentColor" /></svg>
-                  </span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75" href="https://github.com/Nate-weeks/optimaz">
-                  <i class="fab fa-pinterest text-lg leading-lg text-white opacity-75" />
-                  <span class="ml-2">
-                    <svg
-                      class="w-6 h-6 text-white hover:text-gray-800 button--github"
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                      aria-hidden="true"
-                      role="img"
-                      width="32"
-                      height="32"
-                      preserveAspectRatio="xMidYMid meet"
-                      viewBox="0 0 24 24"
-                    ><path d="M12 2.247a10 10 0 0 0-3.162 19.487c.5.088.687-.212.687-.475c0-.237-.012-1.025-.012-1.862c-2.513.462-3.163-.613-3.363-1.175a3.636 3.636 0 0 0-1.025-1.413c-.35-.187-.85-.65-.013-.662a2.001 2.001 0 0 1 1.538 1.025a2.137 2.137 0 0 0 2.912.825a2.104 2.104 0 0 1 .638-1.338c-2.225-.25-4.55-1.112-4.55-4.937a3.892 3.892 0 0 1 1.025-2.688a3.594 3.594 0 0 1 .1-2.65s.837-.262 2.75 1.025a9.427 9.427 0 0 1 5 0c1.912-1.3 2.75-1.025 2.75-1.025a3.593 3.593 0 0 1 .1 2.65a3.869 3.869 0 0 1 1.025 2.688c0 3.837-2.338 4.687-4.563 4.937a2.368 2.368 0 0 1 .675 1.85c0 1.338-.012 2.413-.012 2.75c0 .263.187.575.687.475A10.005 10.005 0 0 0 12 2.247z" fill="currentColor" /></svg>
-                  </span>
-                </a>
-              </li>
-            </ul>
+    <div class="bg-no-repeat bg-dogmaze home h-screen w-screen relative overflow-hidden font">
+      <NavBar />
+        <div class="xl:hidden flex flex-col w-screen mt-6 p-10 justify-center items-center">
+          <div class="card w-48 sm:w-96">
+              <div class="flex justify-center">
+                <svg 
+                  class="w-64 h-64 text-white"
+                  xmlns="http://www.w3.org/2000/svg" 
+                  viewBox="0 0 24 24" 
+                  fill="currentColor">
+                  <path fillRule="evenodd" d="M2.25 5.25a3 3 0 013-3h13.5a3 3 0 013 3V15a3 3 0 01-3 3h-3v.257c0 .597.237 1.17.659 1.591l.621.622a.75.75 0 01-.53 1.28h-9a.75.75 0 01-.53-1.28l.621-.622a2.25 2.25 0 00.659-1.59V18h-3a3 3 0 01-3-3V5.25zm1.5 0v7.5a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5v-7.5a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5z" clipRule="evenodd" />
+                </svg>
+              </div>
+            <p class="text-white text-2xl mx-auto text-center">Try Bigger Screen 👀</p>
           </div>
         </div>
-      </nav>
-  
-      <div class="body-container font-logo sm:pt-1 md:pt-24 lg:pt-28 flex justify-center flex-col w-screen">
-        <p class="text-white text-2xl mx-auto text-center">Optimaz is under construction. 🏗️</p>
-        <h1 class="text-9xl font-bold text-white text-center mx-auto">Coming <span class="text-gray-700">Soon</span>...</h1>
-        <h2 class="text-white text-center mt-12">Please follow us on <a class="p-2 rounded-sm text-white bg-gray-700 hover:text-gray-700 hover:bg-white" href="https://twitter.com/optimazme/">Twitter</a> for updates!</h2>
-        <div class="launching-timer flex sm:px-24 md:px-44 py-5 text-white w-full flex-row">
-         <div class="mx-auto">
-           <p id="days" class="text-5xl">{{ days }}</p>
-           <span>Days</span>
-         </div>
-         <div class="mx-auto">
-           <p id="hours" class="text-5xl">{{ hours }}</p>
-           <span>Hours</span>
-         </div>
-         <div class="mx-auto">
-           <p id="minutes" class="text-5xl">{{ minutes }}</p>
-           <span>Minutes</span>
-         </div>
-         <div class="mx-auto">
-           <p id="seconds" class="text-5xl">{{ seconds }}</p>
-           <span>Seconds</span>
-         </div>
+
+      <div class="hidden xl:grid grid-cols-2 game_fonts">
+        <div class="p-32 pr-10">
+          <div class="card">
+            <p class="text-5xl text-white">Never played, <br class="p-1">no problem</p> 
+            <button class="bg-red-500 text-white w-full h-20 mt-10 rounded-md text-2xl">Play Demo Now</button>
+          </div>
+        </div>
+        <div class="p-32 pl-10 h-100">
+          <div class="card">
+            <p class="text-5xl text-white">Know already <br>Play your way</p>
+            <NuxtLink to="/play" class="bg-red-500 text-white w-full h-20 mt-10 rounded-md text-2xl">Play</NuxtLink>
+          </div>
         </div>
       </div>
-    </div>
+      <div class="text-white text-3xl w-full font flex justify-center items-center overflow-hidden fixed bottom-10">
+
+        <div>
+          Built with &nbsp;
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12 text-red-500">
+            <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+          </svg>
+        </div>
+        <p>&nbsp; on &nbsp;</p>
+        <div>
+          <a href="https://www.optimism.io/">
+          <svg width="150" height="21" viewBox="0 0 150 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.57408 20.1975C5.34861 20.1975 3.52522 19.6739 2.10391 18.6266C0.701303 17.5606 0 16.0458 0 14.0822C0 13.6707 0.0467535 13.1658 0.140261 12.5674C0.383379 11.2209 0.729355 9.60318 1.17819 7.71434C2.44989 2.57145 5.73199 0 11.0245 0C12.4645 0 13.7549 0.243119 14.8957 0.729356C16.0365 1.19689 16.9341 1.90755 17.5887 2.86132C18.2432 3.79639 18.5705 4.91848 18.5705 6.22758C18.5705 6.62031 18.5238 7.11589 18.4303 7.71434C18.1497 9.37877 17.8131 10.9964 17.4204 12.5674C16.7658 15.1295 15.6344 17.0464 14.0261 18.318C12.4177 19.571 10.2671 20.1975 7.57408 20.1975ZM7.96681 16.158C9.01409 16.158 9.9024 15.8495 10.6318 15.2323C11.3798 14.6152 11.9128 13.6707 12.2307 12.399C12.6609 10.6411 12.9881 9.10759 13.2126 7.7985C13.2874 7.40577 13.3248 7.00368 13.3248 6.59225C13.3248 4.89042 12.4364 4.03951 10.6598 4.03951C9.61253 4.03951 8.71486 4.34808 7.96681 4.96523C7.23745 5.58238 6.71381 6.5268 6.39589 7.7985C6.05926 9.05149 5.72264 10.585 5.38601 12.399C5.3112 12.7731 5.2738 13.1658 5.2738 13.5772C5.2738 15.2978 6.17147 16.158 7.96681 16.158Z" fill="#F8F8F8"/>
+            <path d="M21.417 19.917C21.2112 19.917 21.0523 19.8516 20.9401 19.7207C20.8466 19.571 20.8185 19.4027 20.8559 19.2157L24.7271 0.981825C24.7645 0.776109 24.8674 0.607797 25.0357 0.476887C25.204 0.345977 25.3817 0.280521 25.5687 0.280521H33.0305C35.1064 0.280521 36.7708 0.710654 38.0238 1.57092C39.2955 2.43119 39.9314 3.67483 39.9314 5.30185C39.9314 5.76939 39.8753 6.25563 39.7631 6.76057C39.2955 8.91123 38.3511 10.5009 36.9298 11.5294C35.5272 12.558 33.6009 13.0723 31.151 13.0723H27.364L26.0736 19.2157C26.0362 19.4214 25.9334 19.5897 25.765 19.7207C25.5967 19.8516 25.4191 19.917 25.232 19.917H21.417ZM31.3474 9.2011C32.1329 9.2011 32.8155 8.98603 33.3952 8.5559C33.9937 8.12577 34.3864 7.50862 34.5734 6.70446C34.6295 6.38654 34.6576 6.10602 34.6576 5.8629C34.6576 5.32056 34.4986 4.90912 34.1807 4.6286C33.8628 4.32938 33.3204 4.17977 32.5537 4.17977H29.1874L28.1214 9.2011H31.3474Z" fill="#F8F8F8"/>
+            <path d="M46.2519 19.917C46.0462 19.917 45.8872 19.8516 45.775 19.7207C45.6628 19.571 45.6254 19.4027 45.6628 19.2157L48.7766 4.68471H43.7833C43.5776 4.68471 43.4186 4.61925 43.3064 4.48834C43.2129 4.33873 43.1849 4.17042 43.2223 3.9834L43.8675 0.981825C43.9049 0.776109 44.0077 0.607797 44.176 0.476887C44.3443 0.345977 44.522 0.280521 44.709 0.280521H59.8011C60.0068 0.280521 60.1657 0.345977 60.278 0.476887C60.3528 0.589095 60.3902 0.701303 60.3902 0.813512C60.3902 0.869616 60.3808 0.925721 60.3621 0.981825L59.7169 3.9834C59.6795 4.18912 59.5767 4.35743 59.4083 4.48834C59.2587 4.61925 59.0811 4.68471 58.8754 4.68471H53.9101L50.7963 19.2157C50.7589 19.4214 50.6561 19.5897 50.4878 19.7207C50.3194 19.8516 50.1418 19.917 49.9548 19.917H46.2519Z" fill="#F8F8F8"/>
+            <path d="M61.1057 19.917C60.9 19.917 60.7411 19.8516 60.6289 19.7207C60.5166 19.571 60.4792 19.4027 60.5166 19.2157L64.4159 0.981825C64.4533 0.776109 64.5562 0.607797 64.7245 0.476887C64.8928 0.345977 65.0704 0.280521 65.2575 0.280521H69.0445C69.2502 0.280521 69.4092 0.345977 69.5214 0.476887C69.5962 0.589095 69.6336 0.701303 69.6336 0.813512C69.6336 0.869616 69.6242 0.925721 69.6055 0.981825L65.7343 19.2157C65.6969 19.4214 65.5941 19.5897 65.4258 19.7207C65.2575 19.8516 65.0798 19.917 64.8928 19.917H61.1057Z" fill="#F8F8F8"/>
+            <path d="M71.7873 19.917C71.5816 19.917 71.4226 19.8516 71.3104 19.7207C71.1982 19.5897 71.1608 19.4214 71.1982 19.2157L75.0694 0.981825C75.1068 0.776109 75.2096 0.607797 75.3779 0.476887C75.5463 0.345977 75.7333 0.280521 75.939 0.280521H78.9686C79.4175 0.280521 79.7073 0.486237 79.8382 0.897669L82.8959 9.73409L89.7126 0.897669C89.8061 0.748057 89.937 0.607797 90.1053 0.476887C90.2923 0.345977 90.5167 0.280521 90.7786 0.280521H93.8363C94.042 0.280521 94.2009 0.345977 94.3131 0.476887C94.3879 0.589095 94.4254 0.701303 94.4254 0.813512C94.4254 0.869616 94.416 0.925721 94.3973 0.981825L90.5261 19.2157C90.4887 19.4214 90.3858 19.5897 90.2175 19.7207C90.0492 19.8516 89.8716 19.917 89.6845 19.917H86.2902C86.0845 19.917 85.9256 19.8516 85.8133 19.7207C85.7198 19.571 85.6918 19.4027 85.7292 19.2157L87.9173 8.86448L83.6253 14.5591C83.4383 14.7648 83.2606 14.9237 83.0923 15.0359C82.924 15.1482 82.7276 15.2043 82.5032 15.2043H81.0445C80.6518 15.2043 80.3806 14.9892 80.231 14.5591L78.2393 8.61201L75.9951 19.2157C75.9577 19.4214 75.8548 19.5897 75.6865 19.7207C75.5182 19.8516 75.3405 19.917 75.1535 19.917H71.7873Z" fill="#F8F8F8"/>
+            <path d="M96.5484 19.917C96.3426 19.917 96.1837 19.8516 96.0715 19.7207C95.9593 19.571 95.9219 19.4027 95.9593 19.2157L99.8585 0.981825C99.8959 0.776109 99.9988 0.607797 100.167 0.476887C100.335 0.345977 100.513 0.280521 100.7 0.280521H104.487C104.693 0.280521 104.852 0.345977 104.964 0.476887C105.039 0.589095 105.076 0.701303 105.076 0.813512C105.076 0.869616 105.067 0.925721 105.048 0.981825L101.177 19.2157C101.14 19.4214 101.037 19.5897 100.868 19.7207C100.7 19.8516 100.522 19.917 100.335 19.917H96.5484Z" fill="#F8F8F8"/>
+            <path d="M114.159 20.1975C112.513 20.1975 111.101 19.9731 109.923 19.5243C108.763 19.0755 107.884 18.477 107.286 17.729C106.706 16.9809 106.416 16.1487 106.416 15.2323C106.416 15.0827 106.435 14.8583 106.472 14.5591C106.51 14.3907 106.585 14.2505 106.697 14.1383C106.828 14.0261 106.977 13.97 107.146 13.97H110.736C110.961 13.97 111.129 14.0074 111.241 14.0822C111.372 14.157 111.503 14.2879 111.634 14.4749C111.765 14.9611 112.064 15.3632 112.532 15.6811C113.018 15.9991 113.682 16.158 114.523 16.158C115.589 16.158 116.45 15.9897 117.104 15.6531C117.759 15.3165 118.152 14.8583 118.282 14.2785C118.301 14.2037 118.31 14.0915 118.31 13.9419C118.31 13.4744 118.021 13.1097 117.441 12.8479C116.861 12.5674 115.795 12.2401 114.243 11.8661C112.429 11.4733 111.054 10.8842 110.119 10.0988C109.184 9.29461 108.717 8.24733 108.717 6.95693C108.717 6.5081 108.773 6.04991 108.885 5.58238C109.259 3.84314 110.185 2.47794 111.662 1.48676C113.158 0.495588 115.084 0 117.441 0C118.862 0 120.125 0.252469 121.228 0.757408C122.331 1.26235 123.182 1.90755 123.781 2.69301C124.398 3.45976 124.706 4.22652 124.706 4.99328C124.706 5.2177 124.697 5.37666 124.678 5.47017C124.641 5.63848 124.557 5.77874 124.426 5.89095C124.314 6.00316 124.173 6.05926 124.005 6.05926H120.246C119.835 6.05926 119.554 5.9003 119.405 5.58238C119.386 5.15224 119.161 4.78757 118.731 4.48834C118.301 4.18912 117.74 4.03951 117.048 4.03951C116.225 4.03951 115.543 4.18912 115 4.48834C114.477 4.78757 114.149 5.22705 114.019 5.80679C114 5.9003 113.99 6.02186 113.99 6.17147C113.99 6.6203 114.252 6.99433 114.776 7.29356C115.318 7.57408 116.263 7.86395 117.609 8.16317C119.704 8.5746 121.228 9.1637 122.182 9.93046C123.154 10.6972 123.64 11.7164 123.64 12.9881C123.64 13.4183 123.584 13.8858 123.472 14.3907C123.061 16.2983 122.06 17.7477 120.47 18.7388C118.9 19.7113 116.796 20.1975 114.159 20.1975Z" fill="#F8F8F8"/>
+            <path d="M127.362 19.917C127.156 19.917 126.997 19.8516 126.885 19.7207C126.773 19.5897 126.735 19.4214 126.773 19.2157L130.644 0.981825C130.681 0.776109 130.784 0.607797 130.953 0.476887C131.121 0.345977 131.308 0.280521 131.514 0.280521H134.543C134.992 0.280521 135.282 0.486237 135.413 0.897669L138.471 9.73409L145.287 0.897669C145.381 0.748057 145.512 0.607797 145.68 0.476887C145.867 0.345977 146.091 0.280521 146.353 0.280521H149.411C149.617 0.280521 149.776 0.345977 149.888 0.476887C149.963 0.589095 150 0.701303 150 0.813512C150 0.869616 149.991 0.925721 149.972 0.981825L146.101 19.2157C146.063 19.4214 145.96 19.5897 145.792 19.7207C145.624 19.8516 145.446 19.917 145.259 19.917H141.865C141.659 19.917 141.5 19.8516 141.388 19.7207C141.294 19.571 141.266 19.4027 141.304 19.2157L143.492 8.86448L139.2 14.5591C139.013 14.7648 138.835 14.9237 138.667 15.0359C138.499 15.1482 138.302 15.2043 138.078 15.2043H136.619C136.226 15.2043 135.955 14.9892 135.806 14.5591L133.814 8.61201L131.57 19.2157C131.532 19.4214 131.429 19.5897 131.261 19.7207C131.093 19.8516 130.915 19.917 130.728 19.917H127.362Z" fill="#F8F8F8"/>
+          </svg>
+          </a>
+        </div>
+        <div class="font-bold">
+        &nbsp; by &nbsp;<NuxtLink to="/team" class="logo">OPTIMAZ.ME Team</NuxtLink>
+        </div>
+      </div>
+  </div>
 
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapGetters } from 'vuex'
+import axios from 'axios'
+declare const window: any
+
 
 interface Data {
-  countdownEndDate: Date|any
-  difference: number
-  days: number
-  hours: number,
-  minutes: number,
-  seconds: number
+
 }
 
 interface Methods {
-  setCountdownDate: any
-  toggleNavbar: any
+
 }
 
 interface Components {
-  AFrameWrapper: any
-  SideBar: any
-  showMenu?: any
+
 }
 
 interface Props {
 
 }
-export default Vue.extend<Data, Methods, Components, Props>({
-  data() {
-    return {
-      countdownEndDate: null,
-      difference: 0,
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-      showMenu: true
-    }
-  },
-  mounted() {
-    this.countdownEndDate = new Date("Dec 4, 2022 00:00:00").getTime();
-    this.setCountdownDate()
-  },
-  methods: {
-    setCountdownDate() {
-      setInterval(() =>{
-        const now = new Date().getTime();
-        const difference = this.countdownEndDate - now;
-        this.days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        this.hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        this.minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        this.seconds = Math.floor((difference % (1000 * 60)) / 1000);
-      },1000);
-    },
-    toggleNavbar() {
-      this.showMenu = !this.showMenu;
-    }
-  }
-})
 
+
+export default Vue.extend<Data, Methods, Components, Props>({
+
+
+})
 </script>
 
 <style>
-  /* .body-container {
-    position: absolute;
-    transform: translateX(20%);
-  } */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Zen+Dots&display=swap');
 
-  .body-container:before {
-    background-color: rgba(255, 255, 255, .15);  
-    backdrop-filter: blur(5px);
-}
+  .logo {
+    font-family: 'Poppins', sans-serif;
+  }
+  .font{
+    font-family: 'Roboto', sans-serif;
+  }
+  .game_fonts{
+    font-family: 'Zen Dots', cursive;
+  }
+
+  .home {
+    background-position: center;
+    background-size: cover;
+  }
+
+  .home-star {
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  .card {
+    height: auto;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: rgba(0,0,0,0.33);
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(0px);
+  }
+
+  .glass{
+    background: rgba(0,0,0,0.33);
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(0px);
+  }
 </style>
