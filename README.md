@@ -4,7 +4,7 @@
 
 A token-gated timed Metaverse maze scavenger hunt. Each maze benefits a different charity and the images that are found come with words that can be redeemed for an AI generated image at the end of the game. 
 
-
+[Our Submission Video](https://youtu.be/Q1K85F30Imk)
 
 ## Overview ##
 Optimaz.me players get an uniquely immersive experience as they hunt for the images within the maze. It is a straight forward experience that with a couple of clicks users are able to explore the world on their own.
