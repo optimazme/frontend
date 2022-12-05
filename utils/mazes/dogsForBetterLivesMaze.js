@@ -15,7 +15,7 @@ export default {
     aiCollection: '',
     mazeName: 'Dogs for Better Lives Maze',
     revealGamePassImage: 'mysterious_dogs_for_better_lives.png',
-    assets: [
+    localAssets: [
       {
         name: 'maze',
         obj: 'http://localhost:3000/mazes/dog_maze.glb',
@@ -26,7 +26,7 @@ export default {
         }
       },
     ],
-    remoteAssets: [
+    assets: [
       {
         name: 'maze',
         obj: 'https://www.optimaz.me/mazes/dog_maze.glb',
