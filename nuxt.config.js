@@ -79,7 +79,9 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@/assets/css/main.css',
   ],
+    
   env: {
     BLOCK_EXPLORER_URL: process.env.BLOCK_EXPLORER_URL,
     CHAIN_ID: process.env.CHAIN_ID,
