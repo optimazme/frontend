@@ -61,16 +61,16 @@ The experience of hunting for images is fun on its own. Given more time we would
 
 ## Team ##
 
-Amy Detwiler
+Amy Detwiler [@duaimei](https://github.com/duaimei)
 
 
-Nate Weeks
+Nate Weeks [@nate-weeks](https://github.com/Nate-weeks)
 
 
-Ry
+Ry [@ryokog](https://github.com/Ryokog)
 
 
-Satyam
+Satyam [@satyvm](https://www.github.com/satyvm)
 
 
 ## Technologies Used
