@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h2 class="text-4xl w-full text-center p-5 my-5 bg-green-800 text-white">More from Optimaz</h2>
+  <div class="home-star">
+    <h2 class="text-4xl w-screen text-center p-5 my-5 bg-green-800 text-white">More from Optimaz</h2>
     
     <div class="grid grid-cols-3">
       <div v-for="(asset, index) in assets" :key="`asset-${index}`">
@@ -80,3 +80,11 @@ export default Vue.extend<Data, Methods, Components, Props>({
   }
 })
 </script>
+<style scoped>
+.home-star {
+    background-image: url(../../static/bg_star.png);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>

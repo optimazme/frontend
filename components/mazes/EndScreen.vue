@@ -28,7 +28,10 @@
         </div>
         <img :src="pfpSource" alt="your souvenir pfp is on its way!" class="w-1/4 h-1/4 pl-5"/>
       </div>
-      <MoreOpenSea class="mx-2 sm:mx-10"/>
+      <div class="bg-black w-full">
+        <MoreOpenSea class="mx-2 sm:mx-10"/>
+      </div>
+      
     </div>
   </div>
 </template>
