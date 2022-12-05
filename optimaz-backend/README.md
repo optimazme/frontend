@@ -7,7 +7,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+A nest framework backend to interract with the niftykit API and make contract calls to update metadata as well as generate AI images and upload them to IPFS through the pinata API.  It is deployed with AWS Amplify as a lambda with http routes served through API gateway.
 
 ## Installation
 
@@ -134,23 +134,6 @@ success response:
 ```
 "https://gateway.pinata.cloud/ipfs/QmQtRLmYZTshTQDxEQgaHwoP6zA57TZpAfLcReEzghK6qD"
 ```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
 ## License
 
