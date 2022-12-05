@@ -112,7 +112,7 @@
                         4.
                       </div>
                       <div class="col-span-10 my-5 mb-10">
-                        Be aware of the limited time you have got (5 minutes).
+                        Be aware of the time limit. You have 5 minutes!!
                       </div>       
                     </div>               
                   </div>
