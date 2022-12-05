@@ -25,8 +25,11 @@ let AppController = class AppController {
     async getAiArtMetadata() {
         return this.appService.getAiPassMetadata();
     }
-    getTransactionByHash(walletAddress) {
+    getNftByWalletAddress(walletAddress) {
         return this.appService.checkForGamePassOwner(walletAddress);
+    }
+    getTransactionByHash(walletAddress) {
+        return this.appService.checkForAiOwner(walletAddress);
     }
     async updateGameTokenMetadata(body) {
         return this.appService.updateGameTokenMetadata(body.tokenId, body.prompt);
@@ -52,6 +55,13 @@ __decorate([
 ], AppController.prototype, "getAiArtMetadata", null);
 __decorate([
     (0, common_1.Get)("getNftUrl/:walletAddress"),
+    __param(0, (0, common_1.Param)("walletAddress")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "getNftByWalletAddress", null);
+__decorate([
+    (0, common_1.Get)("getAiIndex/:walletAddress"),
     __param(0, (0, common_1.Param)("walletAddress")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

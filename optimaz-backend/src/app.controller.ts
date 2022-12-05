@@ -17,8 +17,13 @@ export class AppController {
   }
 
   @Get("getNftUrl/:walletAddress")
-  getTransactionByHash(@Param("walletAddress") walletAddress: string) {
+  getNftByWalletAddress(@Param("walletAddress") walletAddress: string) {
     return this.appService.checkForGamePassOwner(walletAddress)
+  }
+
+  @Get("getAiIndex/:walletAddress")
+  getTransactionByHash(@Param("walletAddress") walletAddress: string) {
+    return this.appService.checkForAiOwner(walletAddress)
   }
 
   @Post("updateGameTokenMetadata")

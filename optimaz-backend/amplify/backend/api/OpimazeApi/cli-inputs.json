@@ -54,6 +54,13 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/getAiIndex/{walletAddress}": {
+      "name": "/getAiIndex/{walletAddress}",
+      "lambdaFunction": "frontend69abea28",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }
