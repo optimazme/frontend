@@ -41,7 +41,6 @@ module.exports = {
       backgroundImage: {
         'logo-p': "url('static/saun_maze_p.png')",
         'maze': "url('static/saun_maze.png')",
-        'landing': "url('static/pexels-billel-moula-540518.jpg')",
         'optimaz': "url('static/optimaz.png')",
       },
       width: {
