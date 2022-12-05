@@ -14,7 +14,7 @@
         :maze-info="maze.mazeInfo"
         :should-setup-game="true"
       >
-        <template #mintImage><NuxtImg :src="maze.img" :alt="`${maze.name} Game Pass`" /></template>
+        <template #mintImage><img :src="maze.img" :alt="`${maze.name} Game Pass`" /></template>
       </MintNft>
     </div>
   </div>
@@ -22,6 +22,7 @@
 <script lang="ts">
 import Vue from 'vue'
 
+import { mapGetters } from 'vuex'
 import dogsForBetterLivesInfo from '@/utils/mazes/dogsForBetterLivesMaze'
 declare const window: any
 
@@ -38,6 +39,7 @@ interface Methods {
 
 interface Components {
   MintNft?: any
+  baseUrl?: any
   
 }
 
@@ -57,14 +59,14 @@ export default Vue.extend<Data, Methods, Components, Props>({
     }
   },
   computed: {
-    
+    ...mapGetters(['baseUrl'])
   },
   mounted() {
     this.mazes = [
         {
           name: this.dbfl.data.mazeName,
           slug: this.dbfl.data.slug,
-          img: this.dbfl.data.buyImg,
+          img: `${this.baseUrl}${this.dbfl.data.buyImg}`,
           openSeaCollection: 'dfbl-ai',
           price: parseInt(this.dbfl.data.gamePassPrice) / 10e18,
           currency: this.dbfl.data.currency,
