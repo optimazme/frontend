@@ -7,7 +7,7 @@
 
 ## Description
 
-A nest framework backend to interract with the niftykit API and make contract calls to update metadata as well as generate AI images and upload them to IPFS through the pinata API.  It is deployed with AWS Amplify as a lambda with http routes served through API gateway.
+A nest framework backend to interract with the niftykit API and make contract calls to update NFT metadata as well as generate AI images and upload them to IPFS through the pinata API.  It is deployed with AWS Amplify as a lambda with http routes served through API gateway.
 
 ## Installation
 
