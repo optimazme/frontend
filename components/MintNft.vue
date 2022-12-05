@@ -132,12 +132,8 @@ export default Vue.extend<Data, Methods, Components, Props>({
       },
     setGame() {
       
-      const url = 'https://api.niftykit.com/drops/tokens'
-      const config = {
-        headers: {
-          'x-api-key': this.mazeInfo.aiNiftyKitApi
-        } 
-      }
+      const url = 'https://x7ygc50t17.execute-api.us-west-1.amazonaws.com/staging/getAiArtMetadata'
+      
       
       
       let locations = [...new Set(this.mazeInfo.locations)]
@@ -149,8 +145,10 @@ export default Vue.extend<Data, Methods, Components, Props>({
       const firstPrompt: string[] = prompt[0]
       const chosenPrompt = [...new Set(firstPrompt)].sort(() => (Math.random() > .5) ? 1 : -1)
       
-      axios.get(url, config).then((response) => {
-        const result = response.data.data
+      axios.get(url).then((response) => {
+        const result = response.data
+        console.log({result})
+        console.log("---- mint real --- ")
         const images = result.map((x: any) => { return x.data.image })
         const showImages = this.setShowImages(images)
         const resultImages = showImages.map((image: string, index: number) => {
