@@ -4,16 +4,16 @@
 
 ## Summary ##
 
-A token-gated timed Metaverse maze scavenger hunt. Each maze benefits a different charity and the images that are found come with words that can be redeemed for an AI generated image at the end of the game. 
+A token-gated timed Metaverse maze scavenger hunt. Each maze benefits a different charity and the images that are found come with words that can be redeemed and used as a prompt to generate an AI image at the end of the game. 
 
 
 
 ## Overview ##
-Optimaz.me players get an uniquely immersive experience as they hunt for the images within the maze. It is a straight forward experience that with a couple of clicks users are able to explore the world on their own.
+Optimaz.me players get a uniquely immersive experience as they hunt for the images within the maze. It is a straight forward experience where, with a couple of clicks, users are able to explore the world on their own.
 
-Users get a unique game pass for playing the game, and they can mint AI art that will have the chance to be shown in subsequent play throughs of the maze. Half of the proceeds from every game pass purchase goes to the benefitting charity. The donations will be made through The Giving Block.
+Users get a unique game pass for playing the game, and they can mint AI art that will have the chance to be shown in subsequent play throughs of the maze where other players will have the opportunity to purchase them. Half of the proceeds from every game pass or AI art NFT purchase goes to the benefitting charity. The donations will be made through The Giving Block.
 
-The experience of hunting for images is fun on its own. Given more time, and we would love to add more features and utilities to make this a truly special experience when giving to charities.
+The experience of hunting for images is fun on its own. Given more time we would love to add more features and utilities to make this a truly special experience when giving to charities.
 
 ## How to Play ##
 ### Step 1: We are using the Optimism blockchain. For many reasons.
@@ -44,18 +44,15 @@ The experience of hunting for images is fun on its own. Given more time, and we 
 ### Step 6: Enter into the maze
 ![Enter Maze](https://www.optimaz.me/memes/enter_maze.png)
 
-<br>
+Navigation: You can use your arrow keys and WASD to move forward and backwards. You can use your mouse to grab the screen and change where you're looking.
 
-### Step 7: Play the Game
-**Navigation**: You can use your arrow keys and WASD to move forward and backwards. You can use your mouse to grab the screen and change where you're looking.
+Side Panel: You can see the images that you've found, and how much time you have left. The game ends when you either run out of time or have found all of the images in the maze.
 
-**Side Panel**: You can see the images that you've found, and how much time you have left. The game ends when you either run out of time or have found all of the images in the maze.
-
-**End Screen**:
+End Screen
 ![Enter Maze](https://www.optimaz.me/memes/congratulations.png)
 
-### Step 8: You can mint the words that you rescued from the maze, and the resulting image will have the chance to be shown to future players of the game!
----
+You can mint the words that you rescued from the maze, and the resulting image will have the chance to be shown to future players of the game!
+
 ## Team ##
 
 Amy Detwiler
@@ -111,11 +108,11 @@ This project was build as a part of Encode's Metaverse Hackathon Challenge [deta
 
 | challenge | Description | how we met it |
 | ----------- | ----------- | ----------- |
-| Overall Challenge | Build a project related to the metaverse on any chain, any client, and excited to see games  | Optimaz.me is a timed maze game with game passes on Optimism, and self-hosted on Optimaz.me. The metaverse is built with [aframe](https://aframe.io/), a wrapper for three.js, and makes building outa Metaverse very  easy|
+| Overall Challenge | Build a project related to the metaverse on any chain, any client, and excited to see games  | Optimaz.me is a timed maze game with game passes on Optimism, and self-hosted on Optimaz.me. The metaverse is built with [aframe](https://aframe.io/), a wrapper for three.js, and makes building out a Metaverse very easy|
 | ----------- | ----------- | ----------- |
 | 
 Optimism:
-Build NFT / Gaming Projects with Optimism | Onboarding experience, User Experience, Ecosystem Integration, innovative, public works | Our website is a straight forward experience in a metaverse, and rewards the players by allowing them to mint and additional NFT as a result of their gameplay. 50% of the proceeds will be going to the designated charity |
+Build NFT / Gaming Projects with Optimism | Onboarding experience, User Experience, Ecosystem Integration, innovative, public works | Our website is a straight forward experience in a metaverse, and rewards the players by allowing them to mint an additional NFT as a result of their gameplay. 50% of the proceeds will be going to the designated charity |
 | ----------- | ----------- | ----------- |
 | OpenSea API | creative uses of seaport and OS api | We chose to make this an Optimism project, which isn't compatible with the OpenSea API quite yet. However, we made art using an alternative AI art tool and sold it on Ethereum so that we can display more options to the users on the end screen after gameplay. We were able to use OpenSea API to find the NFTs and SeaPort to get their current price |
 | ----------- | ----------- | ----------- |
