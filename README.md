@@ -16,22 +16,32 @@ Users get a unique game pass for playing the game, and they can mint AI art that
 The experience of hunting for images is fun on its own. Given more time, and we would love to add more features and utilities to make this a truly special experience when giving to charities.
 
 ## How to Play ##
-We are using the Optimism blockchain. For many reasons.
+### Step 1: We are using the Optimism blockchain. For many reasons.
 ![You had me at cheap gas](https://www.optimaz.me/memes/cheap_gas.png)
 
-Before you go to our website make sure that you use a [reliable website](https://app.optimism.io/bridge/deposit) to bridge your Ethereum to Optimism
+<br>
+
+### Step 2: Before you go to our website make sure that you use a [reliable website](https://app.optimism.io/bridge/deposit) to bridge your Ethereum to Optimism
 ![Cross the bridge with us](https://www.optimaz.me/memes/crossing_bridge.png)
 
-Go to our website: [https://www.optimaz.me](https://www.optimaz.me), and click on play!
+<br>
+
+### Step 3: Go to our website: [https://www.optimaz.me](https://www.optimaz.me), and click on play!
 ![our homepage](https://www.optimaz.me/memes/homepage.png)
 
-Switch your Metamask wallet to Optimism
+<br>
+
+### Step 4: Switch your Metamask wallet to Optimism
 ![Metamask on Optimism](https://www.optimaz.me/memes/metamask.png)
 
-Buy your Game Pass
+<br>
+
+### Step 5: Buy your Game Pass
 ![Buy Screen](https://www.optimaz.me/memes/buy_pass.png)
 
-Enter into the maze
+<br>
+
+### Step 6: Enter into the maze
 ![Enter Maze](https://www.optimaz.me/memes/enter_maze.png)
 
 Navigation: You can use your arrow keys and WASD to move forward and backwards. You can use your mouse to grab the screen and change where you're looking.
