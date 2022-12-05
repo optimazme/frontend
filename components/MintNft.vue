@@ -4,7 +4,7 @@
 
     </slot>
     <slot name="mintButton">
-      <button>{{price}} {{currency}} Mint Now</button>
+      <button class="bg-red-500 text-white h-20 mt-10 rounded-md text-2xl w-full">{{price}} {{currency}} Mint Now</button>
     </slot>
     <div v-if="error">{{error}}</div>
   </div>

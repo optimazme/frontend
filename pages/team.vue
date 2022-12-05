@@ -9,11 +9,11 @@
                 <hr class="p-1.5" />
                 <div class="grid grid-cols-1 xl:grid-cols-2 text-xl m-3 items-center">
                     <div class="flex flex-col items-center">
-                        <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" 
+                        <img src="https://pbs.twimg.com/profile_images/1489083841398648840/Jz3XR0VZ_400x400.jpg" 
                         class="w-3/4 overflow-hidden m-2 "/>
                         <div class="flex flex-row items-center">
-                            <p class="text-2xl p-2">XYZ</p>
-                            <a href="">
+                            <p class="text-2xl p-2">Amy of the BannedBooks.Art</p>
+                            <a href="https://github.com/duaimei">
                                 <svg
                                     class="w-6 h-6 text-white hover:text-white/50"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +26,7 @@
                                     viewBox="0 0 24 24"
                                 ><path d="M12 2.247a10 10 0 0 0-3.162 19.487c.5.088.687-.212.687-.475c0-.237-.012-1.025-.012-1.862c-2.513.462-3.163-.613-3.363-1.175a3.636 3.636 0 0 0-1.025-1.413c-.35-.187-.85-.65-.013-.662a2.001 2.001 0 0 1 1.538 1.025a2.137 2.137 0 0 0 2.912.825a2.104 2.104 0 0 1 .638-1.338c-2.225-.25-4.55-1.112-4.55-4.937a3.892 3.892 0 0 1 1.025-2.688a3.594 3.594 0 0 1 .1-2.65s.837-.262 2.75 1.025a9.427 9.427 0 0 1 5 0c1.912-1.3 2.75-1.025 2.75-1.025a3.593 3.593 0 0 1 .1 2.65a3.869 3.869 0 0 1 1.025 2.688c0 3.837-2.338 4.687-4.563 4.937a2.368 2.368 0 0 1 .675 1.85c0 1.338-.012 2.413-.012 2.75c0 .263.187.575.687.475A10.005 10.005 0 0 0 12 2.247z" fill="currentColor" /></svg>
                             </a>
-                            <a href="https://twitter.com/optimazme">
+                            <a href="https://twitter.com/bannedbooksart">
                                 <svg class="w-6 h-6 text-white hover:text-white/50 pl-1"
                                     xmlns="http://www.w3.org/2000/svg"
                                     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -41,11 +41,11 @@
                         </div>
                     </div>
                     <div class="flex flex-col items-center bg-cover bg-center">
-                        <img src="https://images.pexels.com/photos/1370750/pexels-photo-1370750.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                        <img src="https://avatars.githubusercontent.com/u/31779086?v=4" 
                         class="w-3/4 overflow-hidden m-2 "/>
                         <div class="flex flex-row items-center">
-                            <p class="text-2xl p-2">XYZ</p>
-                            <a href="">
+                            <p class="text-2xl p-2">Nate Weeks</p>
+                            <a href="https://github.com/Nate-weeks">
                                 <svg
                                     class="w-6 h-6 text-white hover:text-white/50"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +58,7 @@
                                     viewBox="0 0 24 24"
                                 ><path d="M12 2.247a10 10 0 0 0-3.162 19.487c.5.088.687-.212.687-.475c0-.237-.012-1.025-.012-1.862c-2.513.462-3.163-.613-3.363-1.175a3.636 3.636 0 0 0-1.025-1.413c-.35-.187-.85-.65-.013-.662a2.001 2.001 0 0 1 1.538 1.025a2.137 2.137 0 0 0 2.912.825a2.104 2.104 0 0 1 .638-1.338c-2.225-.25-4.55-1.112-4.55-4.937a3.892 3.892 0 0 1 1.025-2.688a3.594 3.594 0 0 1 .1-2.65s.837-.262 2.75 1.025a9.427 9.427 0 0 1 5 0c1.912-1.3 2.75-1.025 2.75-1.025a3.593 3.593 0 0 1 .1 2.65a3.869 3.869 0 0 1 1.025 2.688c0 3.837-2.338 4.687-4.563 4.937a2.368 2.368 0 0 1 .675 1.85c0 1.338-.012 2.413-.012 2.75c0 .263.187.575.687.475A10.005 10.005 0 0 0 12 2.247z" fill="currentColor" /></svg>
                             </a>
-                            <a href="https://twitter.com/optimazme">
+                            <a href="https://twitter.com/NateWeeks11">
                                 <svg class="w-6 h-6 text-white hover:text-white/50 pl-1"
                                     xmlns="http://www.w3.org/2000/svg"
                                     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -73,11 +73,11 @@
                         </div>
                     </div>
                     <div class="flex flex-col items-center bg-cover bg-center">
-                        <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" 
+                        <img src="https://pbs.twimg.com/profile_images/1530717773940551681/PXE8AO6b_400x400.jpg" 
                         class="w-3/4 overflow-hidden m-2 "/>
                         <div class="flex flex-row items-center">
-                            <p class="text-2xl p-2">XYZ</p>
-                            <a href="">
+                            <p class="text-2xl p-2">Satyam</p>
+                            <a href="https://github.com/satyvm">
                                 <svg
                                     class="w-6 h-6 text-white hover:text-white/50"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +90,7 @@
                                     viewBox="0 0 24 24"
                                 ><path d="M12 2.247a10 10 0 0 0-3.162 19.487c.5.088.687-.212.687-.475c0-.237-.012-1.025-.012-1.862c-2.513.462-3.163-.613-3.363-1.175a3.636 3.636 0 0 0-1.025-1.413c-.35-.187-.85-.65-.013-.662a2.001 2.001 0 0 1 1.538 1.025a2.137 2.137 0 0 0 2.912.825a2.104 2.104 0 0 1 .638-1.338c-2.225-.25-4.55-1.112-4.55-4.937a3.892 3.892 0 0 1 1.025-2.688a3.594 3.594 0 0 1 .1-2.65s.837-.262 2.75 1.025a9.427 9.427 0 0 1 5 0c1.912-1.3 2.75-1.025 2.75-1.025a3.593 3.593 0 0 1 .1 2.65a3.869 3.869 0 0 1 1.025 2.688c0 3.837-2.338 4.687-4.563 4.937a2.368 2.368 0 0 1 .675 1.85c0 1.338-.012 2.413-.012 2.75c0 .263.187.575.687.475A10.005 10.005 0 0 0 12 2.247z" fill="currentColor" /></svg>
                             </a>
-                            <a href="https://twitter.com/optimazme">
+                            <a href="https://twitter.com/satyvm">
                                 <svg class="w-6 h-6 text-white hover:text-white/50 pl-1"
                                     xmlns="http://www.w3.org/2000/svg"
                                     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -105,11 +105,11 @@
                         </div>
                     </div>
                     <div class="flex flex-col items-center bg-cover bg-center">
-                        <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" 
+                        <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png" 
                         class="w-3/4 overflow-hidden m-2 "/>
                         <div class="flex flex-row items-center">
-                            <p class="text-2xl p-2">XYZ</p>
-                            <a href="">
+                            <p class="text-2xl p-2">Ryoko</p>
+                            <a href="https://github.com/Ryokog">
                                 <svg
                                     class="w-6 h-6 text-white hover:text-white/50"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -122,7 +122,7 @@
                                     viewBox="0 0 24 24"
                                 ><path d="M12 2.247a10 10 0 0 0-3.162 19.487c.5.088.687-.212.687-.475c0-.237-.012-1.025-.012-1.862c-2.513.462-3.163-.613-3.363-1.175a3.636 3.636 0 0 0-1.025-1.413c-.35-.187-.85-.65-.013-.662a2.001 2.001 0 0 1 1.538 1.025a2.137 2.137 0 0 0 2.912.825a2.104 2.104 0 0 1 .638-1.338c-2.225-.25-4.55-1.112-4.55-4.937a3.892 3.892 0 0 1 1.025-2.688a3.594 3.594 0 0 1 .1-2.65s.837-.262 2.75 1.025a9.427 9.427 0 0 1 5 0c1.912-1.3 2.75-1.025 2.75-1.025a3.593 3.593 0 0 1 .1 2.65a3.869 3.869 0 0 1 1.025 2.688c0 3.837-2.338 4.687-4.563 4.937a2.368 2.368 0 0 1 .675 1.85c0 1.338-.012 2.413-.012 2.75c0 .263.187.575.687.475A10.005 10.005 0 0 0 12 2.247z" fill="currentColor" /></svg>
                             </a>
-                            <a href="https://twitter.com/optimazme">
+                            <a href="https://twitter.com/Rye84986">
                                 <svg class="w-6 h-6 text-white hover:text-white/50 pl-1"
                                     xmlns="http://www.w3.org/2000/svg"
                                     xmlns:xlink="http://www.w3.org/1999/xlink"
