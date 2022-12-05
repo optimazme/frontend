@@ -132,7 +132,7 @@ export default Vue.extend<Data, Methods, Components, Props>({
       },
     setGame() {
       
-      const url = 'https://x7ygc50t17.execute-api.us-west-1.amazonaws.com/staging/getAiArtMetadata'
+      
       
       
       
@@ -144,12 +144,13 @@ export default Vue.extend<Data, Methods, Components, Props>({
       prompt = prompt.sort(() => (Math.random() > .5) ? 1 : -1)
       const firstPrompt: string[] = prompt[0]
       const chosenPrompt = [...new Set(firstPrompt)].sort(() => (Math.random() > .5) ? 1 : -1)
-      
+
+      const url = 'https://x7ygc50t17.execute-api.us-west-1.amazonaws.com/staging/getAiArtMetadata'
       axios.get(url).then((response) => {
         const result = response.data
         console.log({result})
         console.log("---- mint real --- ")
-        const images = result.map((x: any) => { return x.data.image })
+        const images = [...new Set(result.map((x: any) => { return x.data.image }))]
         const showImages = this.setShowImages(images)
         const resultImages = showImages.map((image: string, index: number) => {
           return {
