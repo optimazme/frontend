@@ -1,6 +1,6 @@
 <template>
     <div class="max-h-screen overflow-y-scroll snap snap-y snap-mandatory">
-      <div class="section w-full h-screen snap-start">
+      <div class="w-full h-screen snap-start">
         <div class="bg-no-repeat home h-screen w-screen relative overflow-hidden font">
           <NavBar />
           <div class="xl:hidden flex flex-col w-screen mt-6 p-10 justify-center items-center">
@@ -21,7 +21,7 @@
           <div class="hidden xl:grid grid-cols-2 game_fonts">
             <div class="p-32 pr-10">
               <div class="card">
-                <p class="text-5xl text-white">Never played, <br class="p-1">no problem. See,</p> 
+                <p class="text-5xl text-white">Never played, <br class="p-1">no problem</p> 
                 <a href="#how-to-play" class="scroll-smooth">
                   <button class="bg-red-500 text-white w-full h-20 mt-10 rounded-md text-2xl">How to Play</button>
                 </a>
@@ -66,18 +66,19 @@
           </div>
         </div>
       </div>
-      <div class="section w-full h-screen snap-start home-star">
+      <div class="w-full h-screen snap-start home-star">
           <div class="mx-10 p-10 text-white">
             <div class="text-4xl game_fonts">
               <a id="how-to-play">How to Play</a>
             </div>
-            <div class="m-10 text-2xl justify-center">
+
+            <div class="grid grid-cols-3 gap-4">
               <!-- start it -->
-              <div class="flex flex-col">
+              <div class="col-span-2">
                 <div class="text-3xl font">
                   1. Connect your wallet and ensure your network is set to Optimism. 
                 </div>
-                <div class="flex-right">
+                <div class="">
                   <img src="../static/howtoplay/metamask.png" alt="" class="w-1/6"/>
                 </div>
               </div>
