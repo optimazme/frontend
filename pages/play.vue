@@ -1,8 +1,8 @@
 <template>
-  <div class="home-star h-screen w-screen">
+  <div class="home-star h-screen w-screen text-white">
     <NavBar />
-    <div class="grid grid-cols-2 items-center mt-20">
-      <div v-for="(maze, index) in mazes" :key="`maze-${index}`" class="w-full pl-10">
+    <div class="flex justify-center items-center text-center mt-20">
+      <div v-for="(maze, index) in mazes" :key="`maze-${index}`" class="w-1/2 pl-10">
         <MintNft
         :contract-address="maze.gamePassContractAddress"
         :contract-abi="maze.contractAbi"
@@ -13,7 +13,7 @@
         :maze-info="maze.mazeInfo"
         :should-setup-game="true"
       >
-        <template #mintImage><img :src="maze.img" :alt="`${maze.name} Game Pass`" /></template>
+        <template #mintImage><img :src="maze.img" :alt="`${maze.name} Game Pass`" class="" /></template>
       </MintNft>
       </div>
     </div>
