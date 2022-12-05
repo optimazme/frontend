@@ -98,7 +98,7 @@ export default Vue.extend<Data, Methods, Components, Props>({
   },
   data() {
     return {
-      mazeObj: `http://www.optimaz.me/mazes/demo.glb`
+      mazeObj: `https://www.optimaz.me/mazes/demo.glb`
     }
   },
   computed: {
