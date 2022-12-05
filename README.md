@@ -44,14 +44,20 @@ The experience of hunting for images is fun on its own. Given more time we would
 ### Step 6: Enter into the maze
 ![Enter Maze](https://www.optimaz.me/memes/enter_maze.png)
 
-Navigation: You can use your arrow keys and WASD to move forward and backwards. You can use your mouse to grab the screen and change where you're looking.
+<br>
 
-Side Panel: You can see the images that you've found, and how much time you have left. The game ends when you either run out of time or have found all of the images in the maze.
+### Step 7: Play the Game
 
-End Screen
+**Navigation**: You can use your arrow keys and WASD to move forward and backwards. You can use your mouse to grab the screen and change where you're looking.
+
+**Side Panel**: You can see the images that you've found, and how much time you have left. The game ends when you either run out of time or have found all of the images in the maze.
+
+**End Screen**:
 ![Enter Maze](https://www.optimaz.me/memes/congratulations.png)
 
-You can mint the words that you rescued from the maze, and the resulting image will have the chance to be shown to future players of the game!
+<br>
+
+### Step 8: You can mint the words that you rescued from the maze, and the resulting image will have the chance to be shown to future players of the game!
 
 ## Team ##
 
