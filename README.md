@@ -44,8 +44,14 @@ You can mint the words that you rescued from the maze, and the resulting image w
 ## Team ##
 
 Amy Detwiler
+
+
 Nate Weeks
+
+
 Ry
+
+
 Satyam
 
 
@@ -90,12 +96,16 @@ This project was build as a part of Encode's Metaverse Hackathon Challenge [deta
 
 | challenge | Description | how we met it |
 | ----------- | ----------- | ----------- |
-| Overall Challenge | Build a project related to the metaverse on any chain, any client, and excited to see games  | Optimaz.me is a timed maze game with game passes on Optimism, and self-hosted on Optimaz.me|
+| Overall Challenge | Build a project related to the metaverse on any chain, any client, and excited to see games  | Optimaz.me is a timed maze game with game passes on Optimism, and self-hosted on Optimaz.me. The metaverse is built with [aframe](https://aframe.io/), a wrapper for three.js, and makes building outa Metaverse very  easy|
+| ----------- | ----------- | ----------- |
 | 
 Optimism:
 Build NFT / Gaming Projects with Optimism | Onboarding experience, User Experience, Ecosystem Integration, innovative, public works | Our website is a straight forward experience in a metaverse, and rewards the players by allowing them to mint and additional NFT as a result of their gameplay. 50% of the proceeds will be going to the designated charity |
+| ----------- | ----------- | ----------- |
 | OpenSea API | creative uses of seaport and OS api | We chose to make this an Optimism project, which isn't compatible with the OpenSea API quite yet. However, we made art using an alternative AI art tool and sold it on Ethereum so that we can display more options to the users on the end screen after gameplay. We were able to use OpenSea API to find the NFTs and SeaPort to get their current price |
+| ----------- | ----------- | ----------- |
 | NiftyKit: Token-Gated Experience | Use the DropKit SDK to create a token-gated experience | Users are prompted to buy a game pass before entiring the timed maze. This uses the NiftyKit DropKit and we used the NiftyKit split contracts to properly split where all of the money should be going.|
+| ----------- | ----------- | ----------- |
 | NiftyKit: Dynamic NFTs | use the Reveal API | We're actually using the reveal API once for the game passes, and once for the AI art generated NFTs. We're using their API to programmatically update the metadata of both NFTs. The game pass gets the game results updated in the metadata, and the AI art gets the art filled out so that it is on display |
 
 
