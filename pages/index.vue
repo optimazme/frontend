@@ -1,6 +1,6 @@
 <template>
     <div class="max-h-screen overflow-y-scroll snap snap-y snap-mandatory">
-      <div class="section w-full h-screen snap-start">
+      <div class="w-full h-screen snap-start">
         <div class="bg-no-repeat home h-screen w-screen relative overflow-hidden font">
           <NavBar />
           <div class="xl:hidden flex flex-col w-screen mt-6 p-10 justify-center items-center">
@@ -21,7 +21,7 @@
           <div class="hidden xl:grid grid-cols-2 game_fonts">
             <div class="p-32 pr-10">
               <div class="card">
-                <p class="text-5xl text-white">Never played, <br class="p-1">no problem. See,</p> 
+                <p class="text-5xl text-white">Never played, <br class="p-1">no problem</p> 
                 <a href="#how-to-play" class="scroll-smooth">
                   <button class="bg-red-500 text-white w-full h-20 mt-10 rounded-md text-2xl">How to Play</button>
                 </a>
@@ -66,24 +66,86 @@
           </div>
         </div>
       </div>
-      <div class="section w-full h-screen snap-start home-star">
+      <div class="w-full h-full snap-start home-star">
           <div class="mx-10 p-10 text-white">
-            <div class="text-4xl game_fonts">
+            <div class="text-4xl game_fonts m-10 mt-0">
               <a id="how-to-play">How to Play</a>
             </div>
-            <div class="m-10 text-2xl justify-center">
-              <!-- start it -->
-              <div class="flex flex-col">
-                <div class="text-3xl font">
-                  1. Connect your wallet and ensure your network is set to Optimism. 
-                </div>
-                <div class="flex-right">
-                  <img src="../static/howtoplay/metamask.png" alt="" class="w-1/6"/>
+            <div class="flex flex-col justify-center items-center new-card ">
+              <div class="p-0 w-3/4">
+                <div class="grid grid-cols-3">        
+                  <div class="text-3xl font col-span-2">
+                    <div class="grid grid-cols-12 gap-4 place-items-stretch">
+                      <div class="col-span-2 my-5 mt-10 text-right text-red-500">
+                        1. 
+                      </div>
+                      <div class="col-span-10 my-5 mt-10">
+                        Connect your wallet and ensure your network is set to Optimism. <br />
+                      </div>
+                      <div class="col-span-2 my-5 mb-10 text-right text-red-500">
+                        2.
+                      </div>
+                      <div class="col-span-10 my-5 mb-10">
+                        Click on the "Play" button to start the game.
+                      </div>       
+                    </div>               
+                  </div>
+                  <div class="w-full h-full">
+                    <img src="../static/howtoplay/metamask.png" alt="" class=""/>
+                  </div>
                 </div>
               </div>
-              
+              <div class="p-0 w-3/4">
+                <div class="grid grid-cols-3">
+                  <div class="w-full h-full ml-1">
+                    <img src="../static/howtoplay/finding_way_inside_maze.png" alt="" class=""/>
+                  </div>        
+                  <div class="text-3xl font col-span-2">
+                    <div class="grid grid-cols-12 gap-4 place-items-stretch">
+                      <div class="col-span-2 my-5 mt-10 text-right text-red-500">
+                        3. 
+                      </div>
+                      <div class="col-span-10 my-5 mt-10">
+                        Explore the Maze. And find the NFTs inside it. <br />
+                      </div>
+                      <div class="col-span-2 my-5 mb-10 text-right text-red-500">
+                        4.
+                      </div>
+                      <div class="col-span-10 my-5 mb-10">
+                        Be aware of the limited time you have got (5 minutes).
+                      </div>       
+                    </div>               
+                  </div>
+                </div>
+              </div>
+              <div class="p-0 w-3/4">
+                <div class="grid grid-cols-3">        
+                  <div class="text-3xl font col-span-2">
+                    <div class="grid grid-cols-12 gap-4 place-items-stretch">
+                      <div class="col-span-2 my-5 mt-10 text-right text-red-500">
+                        5. 
+                      </div>
+                      <div class="col-span-10 my-5 mt-10">
+                        Try to find all the NFTs. If you can find all the NFTs, Congratulations, you have the best luck around here. <br />
+                      </div>
+                      <div class="col-span-2 my-5 mb-10 text-right text-red-500">
+                        6.
+                      </div>
+                      <div class="col-span-10 my-5 mb-10">
+                        It just isn’t a game; play and donate your money to NGOs by buying our NFTs.
+                      </div>       
+                    </div>               
+                  </div>
+                  <div class="w-full h-full">
+                    <img src="../static/howtoplay/charity.png" alt="" class=""/>
+                  </div>
+                </div>
+              </div>
+              <div class="h-24">
+
+              </div>
+
             </div>
-            <!-- end it -->
           </div>
       </div>
     </div>
@@ -168,6 +230,13 @@ export default Vue.extend<Data, Methods, Components, Props>({
   .card {
     height: auto;
     padding: 2rem;
+    border-radius: 1rem;
+    background: rgba(0,0,0,0.33);
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(0px);
+  }
+
+  .new-card {
     border-radius: 1rem;
     background: rgba(0,0,0,0.33);
     -webkit-backdrop-filter: blur(50px);
