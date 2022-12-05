@@ -1,3 +1,5 @@
+![Logo](https://github.com/optimazme/frontend/blob/main/static/github_readme_logo.png?raw=true)
+
 # Optimaz #
 
 ## Summary ##
