@@ -766,11 +766,10 @@ export class AppService {
   }
 
   async updateAiTokenMetadata(id: string, image: string) {
-    const tokensArray: Token[] = await this.getGamePassMetadata()
-
+    console.log("hello")
+    const tokensArray: Token[] = await this.getAiPassMetadata()
     console.log(tokensArray)
     const tokenToUpdate: Token[] = tokensArray.filter((token) => {
-      console.log(`token = ${token.tokenId} id = ${id} ${token.tokenId == id}`)
       return token.tokenId == id
     })
 
@@ -785,7 +784,7 @@ export class AppService {
         tokenToUpdate[0].data,
         {
           headers: {
-            'x-api-key': process.env.GAME_PASS_API_KEY,
+            'x-api-key': process.env.AI_ART_API_KEY,
           },
         }
       ) } catch (err) {
@@ -801,9 +800,7 @@ export class AppService {
   async updateGameTokenMetadata(id: string, prompt: string) {
     const tokensArray: Token[] = await this.getGamePassMetadata()
 
-    console.log(tokensArray)
     const tokenToUpdate: Token[] = tokensArray.filter((token) => {
-      console.log(`token = ${token.tokenId} id = ${id} ${token.tokenId == id}`)
       return token.tokenId == id
     })
 
@@ -956,6 +953,28 @@ export class AppService {
     const nftUrl = await contract.tokenURI(nftId)
     console.log(nftUrl)
     return nftUrl
+    } catch(err){
+      console.log(err)
+      return `either wallet address: ${walletAddress} has no game pass nfts or there was an error: ${err}`
+    }
+  }
+
+  async checkForAiOwner(walletAddress: string) {
+    const options = {
+      alchemy: process.env.ALCHEMY_API_KEY
+  }
+    const provider = ethers.getDefaultProvider("optimism", options);
+
+    const contract = new ethers.Contract(
+      dogAiArtAddress,
+      generativeNFT,
+      provider
+    );
+    try {
+    console.log("attempting to find token of owner by index")
+    const nftId = await contract.tokenOfOwnerByIndex(walletAddress, 0)
+    console.log(ethers.utils.formatUnits(nftId, 0))
+    return ethers.utils.formatUnits(nftId, 0)
     } catch(err){
       console.log(err)
       return `either wallet address: ${walletAddress} has no game pass nfts or there was an error: ${err}`

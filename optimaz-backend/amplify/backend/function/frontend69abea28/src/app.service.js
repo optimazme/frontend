@@ -766,10 +766,8 @@ let AppService = class AppService {
         return 'Hello World!';
     }
     async updateAiTokenMetadata(id, image) {
-        const tokensArray = await this.getGamePassMetadata();
-        console.log(tokensArray);
+        const tokensArray = await this.getAiPassMetadata();
         const tokenToUpdate = tokensArray.filter((token) => {
-            console.log(`token = ${token.tokenId} id = ${id} ${token.tokenId == id}`);
             return token.tokenId == id;
         });
         if (tokenToUpdate.length == 1) {
@@ -779,7 +777,7 @@ let AppService = class AppService {
             try {
                 const { data } = await axios_1.default.put(endpointString, tokenToUpdate[0].data, {
                     headers: {
-                        'x-api-key': process.env.GAME_PASS_API_KEY,
+                        'x-api-key': process.env.AI_ART_API_KEY,
                     },
                 });
             }
@@ -795,9 +793,7 @@ let AppService = class AppService {
     }
     async updateGameTokenMetadata(id, prompt) {
         const tokensArray = await this.getGamePassMetadata();
-        console.log(tokensArray);
         const tokenToUpdate = tokensArray.filter((token) => {
-            console.log(`token = ${token.tokenId} id = ${id} ${token.tokenId == id}`);
             return token.tokenId == id;
         });
         if (tokenToUpdate.length == 1) {
@@ -929,6 +925,23 @@ let AppService = class AppService {
             const nftUrl = await contract.tokenURI(nftId);
             console.log(nftUrl);
             return nftUrl;
+        }
+        catch (err) {
+            console.log(err);
+            return `either wallet address: ${walletAddress} has no game pass nfts or there was an error: ${err}`;
+        }
+    }
+    async checkForAiOwner(walletAddress) {
+        const options = {
+            alchemy: process.env.ALCHEMY_API_KEY
+        };
+        const provider = ethers_1.ethers.getDefaultProvider("optimism", options);
+        const contract = new ethers_1.ethers.Contract(dogAiArtAddress, generativeNFT, provider);
+        try {
+            console.log("attempting to find token of owner by index");
+            const nftId = await contract.tokenOfOwnerByIndex(walletAddress, 0);
+            console.log(ethers_1.ethers.utils.formatUnits(nftId, 0));
+            return ethers_1.ethers.utils.formatUnits(nftId, 0);
         }
         catch (err) {
             console.log(err);
